@@ -73,4 +73,6 @@ public class CloudPlatform : MonoBehaviour
         // 사라짐 상태 해제
         _isFading = false;
     }
+
+
 }

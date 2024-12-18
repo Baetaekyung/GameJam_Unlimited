@@ -122,6 +122,9 @@ public class BallController : MonoBehaviour
     {
         if (IsInvisible is true) return;
 
+        Debug.Log("죽음스테이트");
+        //transform.position = transform.parent.Find("SpawnPoint").transform.position;
+
         StartCoroutine(nameof(DeadRoutine));
     }
 

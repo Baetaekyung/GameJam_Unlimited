@@ -4,13 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class WindManager : MonoBehaviour
+public class Wind : MonoBehaviour
 {
     private BallController _ball;
     public float windForce;
     public Vector2 windDirection;
-    public float windCoolTime = 0.3f;
-    private float _lastWindTime = 0f;
     
     private void Awake()
     {
@@ -19,14 +17,6 @@ public class WindManager : MonoBehaviour
 
     private void Update()
     {
-        if (_lastWindTime >= windCoolTime)
-        {
-            _ball.AddForce(windDirection.normalized, windForce);
-            _lastWindTime = 0f;
-        }
-        else
-        {
-            _lastWindTime += Time.deltaTime;
-        }
+        _ball.AddForce(windDirection.normalized, windForce * Time.deltaTime);
     }
 }

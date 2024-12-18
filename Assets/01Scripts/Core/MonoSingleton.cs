@@ -21,9 +21,6 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
     protected virtual void Awake()
     {
         CheckBindingFlags();
-        
-        Debug.LogWarning($"싱글톤이 2개 이상 씬에 존재함. 이름은 {typeof(T).Name}");
-        Destroy(gameObject);
     }
 
     private void CheckBindingFlags()

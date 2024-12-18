@@ -4,13 +4,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BallInputController : MonoBehaviour
+public class BallInputController : MonoSingleton<BallInputController>
 {
-    public Action<Vector2> OnDragEndEvent;
-    public Action<Vector2, float> OnBallShootEvent;
+    public Action<Vector2, float> OnDragEvent;
+    public Action<Vector2, float> OnShootEvent;
+    public Action<Vector2> OnJetpackEvent;
+    public Action OnDragEndEvent;
     
     private bool _isDragging = false;
     public bool IsDragging => _isDragging;
+    public bool isJetpack = false;
+
+    public float jetpackDuration = 2f;
 
     private Vector2 _dragStartPosition;
     private Vector2 _dragPosition;
@@ -19,11 +24,23 @@ public class BallInputController : MonoBehaviour
     public Vector2 GetDirection => _direction;
 
     [SerializeField] private float _maxShootForce;
+    public float GetMaxForce => _maxShootForce;
     [SerializeField] private float _shootForceDivider;
-    private float _shootForce;
+    private float _shootForce = 0;
+    public float GetForce => _shootForce;
     
     private void Update()
     {
+        if (isJetpack)
+        {
+            jetpackDuration -= Time.deltaTime;
+            if (jetpackDuration <= 0)
+            {
+                isJetpack = false;
+                jetpackDuration = 4f; //4초만 하자
+            }
+        }
+        
         if (Input.GetMouseButtonDown(0))
         {
             DragStart();
@@ -41,11 +58,8 @@ public class BallInputController : MonoBehaviour
     private void DragStart()
     {
         _isDragging = true;
-        _direction = Vector2.zero;
-        _shootForce = 0f;
-        _dragStartPosition = Input.mousePosition;
         
-        Debug.Log("Start Drag");
+        _dragStartPosition = Input.mousePosition;
     }
 
     private void Drag()
@@ -53,38 +67,47 @@ public class BallInputController : MonoBehaviour
         _dragPosition = Input.mousePosition;
         
         _direction = _dragStartPosition - _dragPosition;
-
-        _shootForce = _direction.magnitude / _shootForceDivider; Debug.Log(_shootForce);
-        _shootForce = Mathf.Clamp(_shootForce, 0, _maxShootForce);
         
-        Debug.Log("Dragging");
+        _shootForce = Mathf.Clamp(_direction.magnitude / _shootForceDivider, 0, _maxShootForce);
+        
+        if(isJetpack is false)
+            OnDragEvent?.Invoke(_direction, _shootForce);
+        else if (isJetpack)
+            OnJetpackEvent?.Invoke(_direction);
     }
 
     private void DragEnd()
     {
-        _direction.Normalize();
-        
-        if (_direction.y > 0)
+        if (isJetpack)
         {
-            OnBallShootEvent?.Invoke(_direction, _shootForce);
-            OnDragEndEvent?.Invoke(_direction);
+            _shootForce = 0f;
+            _direction = Vector2.zero;
+            _isDragging = false;
+            isJetpack = false;
+            jetpackDuration = 4f;
+            OnDragEndEvent?.Invoke();
+            
+            return;
         }
         
-        _isDragging = false;
+        OnShootEvent?.Invoke(_direction, _shootForce);
         
-        Debug.Log("End Drag");
+        _shootForce = 0f;
+        _direction = Vector2.zero;
+        _isDragging = false;
+        OnDragEndEvent?.Invoke();
     }
     
 #if UNITY_EDITOR
 
-    private void OnDrawGizmos()
-    {
-        if (_isDragging is false) return;
-        
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, _direction * _shootForce);
-        Gizmos.color = Color.white;
-    }
+    // private void OnDrawGizmos()
+    // {
+    //     if (_isDragging is false) return;
+    //     
+    //     Gizmos.color = Color.yellow;
+    //     Gizmos.DrawLine(transform.position, _direction * _shootForce);
+    //     Gizmos.color = Color.white;
+    // }
 
 #endif
 }

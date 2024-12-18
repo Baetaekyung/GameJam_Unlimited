@@ -6,45 +6,104 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     private BallInputController _inputController;
+    private LineRenderer _lineRenderer;
     private Rigidbody2D _rbCompo;
+    public bool IsInvisible { get; set; }
 
-    private bool _canShoot;
+    [SerializeField] private float _invisibleTime;
+    private float _currentInvisibleTime = 0f;
+
+    [SerializeField] private float _jetpackSpeed;
+    [SerializeField] private int shootCount = 1;
+    public void SetShootCount(int count) => shootCount = count;
+    private bool CanShoot() => shootCount > 0;
 
     private void Awake()
     {
-        _inputController = GetComponent<BallInputController>();
         _rbCompo = GetComponent<Rigidbody2D>();
-        _canShoot = true;
+        _lineRenderer = GetComponent<LineRenderer>();
+        _inputController = BallInputController.Instance;
     }
 
     private void Start()
     {
-        _inputController.OnBallShootEvent += HandleShootEvent;
+        _inputController.OnShootEvent += HandleShootEvent;
+        _inputController.OnDragEvent += HandleDragEvent;
+        _inputController.OnJetpackEvent += HandleJetpackEvent;
+
+        _lineRenderer.positionCount = 2;
+        _lineRenderer.SetPosition(0, new Vector3(0, 0, 0));
+        _lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
+        _lineRenderer.startWidth = 0.2f;
+        _lineRenderer.endWidth = 0.2f;
+    }
+
+    private void Update()
+    {
+        if (IsInvisible)
+        {
+            _currentInvisibleTime += Time.deltaTime;
+
+            if (_currentInvisibleTime >= _invisibleTime)
+            {
+                IsInvisible = false;
+                _currentInvisibleTime = 0f;
+            }
+        }
+    }
+
+    private void HandleJetpackEvent(Vector2 direction)
+    {
+        _lineRenderer.SetPosition(0,  direction);
+        _lineRenderer.SetPosition(1, transform.position);
+        AddForce(direction.normalized, _jetpackSpeed * Time.deltaTime);
+    }
+
+    private void HandleDragEvent(Vector2 direction, float force)
+    {
+        _lineRenderer.SetPosition(0,  direction);
+        _lineRenderer.SetPosition(1, transform.position);
     }
 
     private void HandleShootEvent(Vector2 direction, float force)
     {
-        if (_canShoot is false) return;
+        if (CanShoot() is false) return;
         
-        _rbCompo.AddForce(direction * force, ForceMode2D.Impulse);
-        _canShoot = false;
-    }
+        _lineRenderer.SetPosition(0, Vector3.zero);
+        _lineRenderer.SetPosition(1,  Vector3.zero);
 
+        _rbCompo.velocity = Vector2.zero;
+        _rbCompo.AddForce(direction.normalized * force, ForceMode2D.Impulse);
+        SetShootCount(shootCount - 1);
+    }
+    
     public void AddForce(Vector2 direction, float force)
     {
-        _rbCompo.AddForce(direction, ForceMode2D.Impulse);
+        _rbCompo.AddForce(direction * force, ForceMode2D.Force);
     }
 
     private void OnDestroy()
     {
-        _inputController.OnBallShootEvent -= HandleShootEvent;
+        _inputController.OnShootEvent -= HandleShootEvent;
+        _inputController.OnDragEvent -= HandleDragEvent;
+        _inputController.OnJetpackEvent -= HandleJetpackEvent;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            _canShoot = true;
+            if (shootCount == 0)
+            {
+                SetShootCount(1);
+            }
         }
+    }
+
+    public void Dead()
+    {
+        if (IsInvisible is true) return;
+        
+        Debug.Log("Dead");
     }
 }

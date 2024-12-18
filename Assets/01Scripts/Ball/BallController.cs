@@ -101,6 +101,8 @@ public class BallController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
+            if (shootCount > 0) return;
+
             SetShootCount(1);
         }
     }

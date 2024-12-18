@@ -8,7 +8,7 @@ public class BallController : MonoBehaviour
     private BallInputController _inputController;
     private LineRenderer _lineRenderer;
     private Rigidbody2D _rbCompo;
-    public bool IsInvisible { get; set; }
+    [field: SerializeField] public bool IsInvisible { get; set; } = false;
 
     [SerializeField] private float _invisibleTime;
     private float _currentInvisibleTime = 0f;
@@ -77,9 +77,9 @@ public class BallController : MonoBehaviour
         SetShootCount(shootCount - 1);
     }
     
-    public void AddForce(Vector2 direction, float force)
+    public void AddForce(Vector2 direction, float force, ForceMode2D mode = ForceMode2D.Force)
     {
-        _rbCompo.AddForce(direction * force, ForceMode2D.Force);
+        _rbCompo.AddForce(direction * force, mode);
     }
 
     private void OnDestroy()

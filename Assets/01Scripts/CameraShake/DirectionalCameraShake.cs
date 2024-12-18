@@ -18,6 +18,8 @@ public class CollisionCameraShake : MonoBehaviour
     {
         _player = FindObjectOfType<BallController>();
 
+
+
         // Cinemachine Virtual Camera를 가져옴
         _virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         if (_virtualCamera != null)
@@ -30,13 +32,10 @@ public class CollisionCameraShake : MonoBehaviour
     {
         if (_noise != null)
         {
-            // 충돌 시 카메라 흔들림 활성화
-            _noise.m_AmplitudeGain = _shakeAmplitude;
-            _noise.m_FrequencyGain = _shakeFrequency;
+            Debug.Log("속도는 " + _player.RbCompo.velocity.magnitude);
 
-            // 카메라 흔들림 방향을 설정 (충돌 방향에 맞게 적용)
-            _noise.m_AmplitudeGain = _shakeAmplitude;
-            _noise.m_FrequencyGain = _shakeFrequency;
+            _noise.m_AmplitudeGain = _player.RbCompo.velocity.magnitude;
+            _noise.m_FrequencyGain = _player.RbCompo.velocity.magnitude;
 
             // 흔들림 타이머 설정
             _shakeTimer = _shakeDuration;

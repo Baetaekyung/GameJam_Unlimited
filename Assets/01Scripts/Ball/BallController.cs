@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    public Rigidbody2D RbCompo { get; private set; }
+
     private BallInputController _inputController;
     private LineRenderer _lineRenderer;
-    private Rigidbody2D _rbCompo;
     [field: SerializeField] public bool IsInvisible { get; set; } = false;
 
     [SerializeField] private float _invisibleTime;
@@ -20,7 +21,7 @@ public class BallController : MonoBehaviour
 
     private void Awake()
     {
-        _rbCompo = GetComponent<Rigidbody2D>();
+        RbCompo = GetComponent<Rigidbody2D>();
         _lineRenderer = GetComponent<LineRenderer>();
         _inputController = BallInputController.Instance;
     }
@@ -72,14 +73,14 @@ public class BallController : MonoBehaviour
         _lineRenderer.SetPosition(0, Vector3.zero);
         _lineRenderer.SetPosition(1,  Vector3.zero);
 
-        _rbCompo.velocity = Vector2.zero;
-        _rbCompo.AddForce(direction.normalized * force, ForceMode2D.Impulse);
+        RbCompo.velocity = Vector2.zero;
+        RbCompo.AddForce(direction.normalized * force, ForceMode2D.Impulse);
         SetShootCount(shootCount - 1);
     }
     
     public void AddForce(Vector2 direction, float force, ForceMode2D mode = ForceMode2D.Force)
     {
-        _rbCompo.AddForce(direction * force, mode);
+        RbCompo.AddForce(direction * force, mode);
     }
 
     private void OnDestroy()

@@ -1843,9 +1843,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc612028d2c7f44fad2abe1d3af7ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeDuration: 0.1
-  shakeAmplitude: 7
-  shakeFrequency: 7
+  _shakeDuration: 0.1
+  _shakeAmplitude: 2
+  _shakeFrequency: 2
 --- !u!4 &2061951549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3226955539614716738, guid: d2ddf2880cdf5434890807250a7fa900, type: 3}

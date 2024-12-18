@@ -11,16 +11,18 @@ public class TitleCanvasManager : MonoBehaviour
 
     [SerializeField] private float smoothSpeed = 5f;
 
-    private float targetRotation = 270f; // ¸ñÇ¥ °¢µµ
-    private float currentRotation = 0f; // ÇöÀç °¢µµ (ºÎµå·¯¿î È¸Àü À¯Áö)
+    private float targetRotation = 270f; // ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½
+    private float currentRotation = 0f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½Îµå·¯ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 
-    private int currentScene = 0;
+    private int currentScene = 1;
 
     private float lastTurnTime = 0;
     private float turnningCooldown = 1f;
 
     [SerializeField] private float titleSceneXPos, selectLevelSceneXPos, settingSceneXPos, shopSceneXPos;
     private float currenPosX;
+
+    [SerializeField] private Transform _uiControllerTrm;
 
     private void Awake()
     {
@@ -36,24 +38,24 @@ public class TitleCanvasManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            //if (CheckIsTurnningEnd())
-            //{
-            //    lastTurnTime = Time.time;
-            //    SetChangeView(90);
-            //}
-            SlideScene(1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            //if (CheckIsTurnningEnd())
-            //{
-            //    lastTurnTime = Time.time;
-            //    SetChangeView(-90);
-            //}
-            SlideScene(-1);
-        }
+        // if (Input.GetKeyDown(KeyCode.E))
+        // {
+        //     //if (CheckIsTurnningEnd())
+        //     //{
+        //     //    lastTurnTime = Time.time;
+        //     //    SetChangeView(90);
+        //     //}
+        //     SlideScene(1);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.Q))
+        // {
+        //     //if (CheckIsTurnningEnd())
+        //     //{
+        //     //    lastTurnTime = Time.time;
+        //     //    SetChangeView(-90);
+        //     //}
+        //     SlideScene(-1);
+        // }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -63,7 +65,7 @@ public class TitleCanvasManager : MonoBehaviour
         //RotateView();
         SlideView();
     }
-    private void SlideScene(int v)
+    public void SlideScene(int v)
     {
         currentScene += v;
 
@@ -72,7 +74,7 @@ public class TitleCanvasManager : MonoBehaviour
             currentScene = 4;
         }
 
-        if (currentScene <= 0)
+        if (currentScene <= 1)
         {
             currentScene = 1;
         }
@@ -98,7 +100,7 @@ public class TitleCanvasManager : MonoBehaviour
     }
     private void SlideView()
     {
-        // ºÎµå·´°Ô È¸Àü
+        // ï¿½Îµå·´ï¿½ï¿½ È¸ï¿½ï¿½
         RectTrm.anchoredPosition = new Vector2(-currenPosX, 0);
     }
     private bool CheckIsTurnningEnd()
@@ -111,17 +113,17 @@ public class TitleCanvasManager : MonoBehaviour
     }
     private void RotateView()
     {
-        // ºÎµå·´°Ô È¸Àü
+        // ï¿½Îµå·´ï¿½ï¿½ È¸ï¿½ï¿½
         currentRotation = Mathf.LerpAngle(currentRotation, targetRotation, Time.deltaTime * smoothSpeed);
         RectTrm.localRotation = Quaternion.Euler(0, 0, currentRotation);
     }
 
     private void SetChangeView(float offset)
     {
-        // ¸ñÇ¥ È¸ÀüÀ» 90µµ¾¿ Áõ°¡
+        // ï¿½ï¿½Ç¥ È¸ï¿½ï¿½ï¿½ï¿½ 90ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         targetRotation += offset;
 
-        //¼³Á¤ -> »óÁ¡ -> ¸Þ´º ¹× °ÔÀÓ -> ´Ü°è¼±ÅÃ
+        //ï¿½ï¿½ï¿½ï¿½ -> ï¿½ï¿½ï¿½ï¿½ -> ï¿½Þ´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -> ï¿½Ü°è¼±ï¿½ï¿½
         currentScene++;
 
         switch(currentScene)
@@ -140,7 +142,7 @@ public class TitleCanvasManager : MonoBehaviour
                 break;
         }
 
-        // °¢µµ¸¦ Ç×»ó 0~360 »çÀÌ·Î À¯Áö
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×»ï¿½ 0~360 ï¿½ï¿½ï¿½Ì·ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (targetRotation >= 360f)
         {
             currentScene = 0;

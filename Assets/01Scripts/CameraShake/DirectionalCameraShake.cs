@@ -1,6 +1,5 @@
 using UnityEngine;
 using Cinemachine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class CollisionCameraShake : MonoBehaviour
 {
@@ -34,8 +33,8 @@ public class CollisionCameraShake : MonoBehaviour
         {
             Debug.Log("속도는 " + _player.RbCompo.velocity.magnitude);
 
-            _noise.m_AmplitudeGain = _player.RbCompo.velocity.magnitude;
-            _noise.m_FrequencyGain = _player.RbCompo.velocity.magnitude;
+            _noise.m_AmplitudeGain = _player.RbCompo.velocity.magnitude / 3;
+            _noise.m_FrequencyGain = _player.RbCompo.velocity.magnitude / 3;
 
             // 흔들림 타이머 설정
             _shakeTimer = _shakeDuration;

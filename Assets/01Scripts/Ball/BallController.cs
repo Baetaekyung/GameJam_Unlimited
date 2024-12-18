@@ -69,7 +69,7 @@ public class BallController : MonoBehaviour
 
     private void HandleDragEvent(Vector2 direction, float force)
     {
-        _lineRenderer.SetPosition(0,  direction);
+        _lineRenderer.SetPosition(0,  direction.normalized * -force);
         _lineRenderer.SetPosition(1, transform.position);
     }
 
@@ -98,6 +98,14 @@ public class BallController : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            SetShootCount(1);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {

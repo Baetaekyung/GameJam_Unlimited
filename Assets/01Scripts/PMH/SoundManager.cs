@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -13,6 +15,9 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] private Slider vfxController;
     [SerializeField] private Slider bgmController;
+
+    [SerializeField] private TMP_Text vfxVolumeTxt;
+    [SerializeField] private TMP_Text bgmVolumeTxt;
 
     public AudioMixer audioMixer;
     public AudioMixerGroup MasterGroup;
@@ -41,15 +46,28 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         Init();
+        bgmController.value = 0.5f;
+        vfxController.value = 0.5f;
+        bgmVolume = bgmController.value;
+        sfxVolum = vfxController.value;
+        SetVolume(0);
+
+        bgmController.onValueChanged?.AddListener(SetVolume);
+        vfxController.onValueChanged?.AddListener(SetVolume);
     }
-    private void Update()
+    private void SetVolume(float volume)
     {
-        //if (Input.GetKeyDown(KeyCode.Q))
-        //{
-        //    Debug.Log("왜안돼?");
-        //    _sfxPlayers[0].Play();
-        //    PlayerSFX(SfxType.EFFECT);
-        //}
+        bgmVolume = bgmController.value;
+        bgmPlayer.volume = bgmVolume;
+
+        sfxVolum = vfxController.value;
+        for (int i = 0; i < _sfxPlayers.Length; i++)
+        {
+            _sfxPlayers[i].volume = sfxVolum;
+        }
+
+        vfxVolumeTxt.text = $"SFX Sound : {(int)(sfxVolum * 100)}%";
+        bgmVolumeTxt.text = $"BGM Sound : {(int)(bgmVolume * 100)}%";
     }
 
     private void Init()
@@ -62,6 +80,7 @@ public class SoundManager : MonoBehaviour
         bgmPlayer.loop = true;
         bgmPlayer.volume = bgmVolume;
         bgmPlayer.clip = bgmClip;
+        bgmPlayer.Play();
 
         //효과음 플레이어 초기화
         GameObject sfxObject = new GameObject("SfxPlayer");
@@ -75,6 +94,7 @@ public class SoundManager : MonoBehaviour
             _sfxPlayers[i].volume = sfxVolum;
         }
     }
+
     public void PlayerSFX(SfxType sfxType)
     {
         for (int i = 0; i < _sfxPlayers.Length; i++)

@@ -582,6 +582,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 3962783358748765252, guid: 262fae6b997e3274eaf39853fcc85caf, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8847663574898310819, guid: 262fae6b997e3274eaf39853fcc85caf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1419,6 +1423,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1627082453 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2198785829576997337, guid: 262fae6b997e3274eaf39853fcc85caf, type: 3}
+  m_PrefabInstance: {fileID: 368496179}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449690b0db2befb4d998fed3cb18299e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2013173450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,6 +1524,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f5182898cd51c40a2f903d3e19631d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultMat: {fileID: 6200000, guid: 3c780f58556ce754487eaea29893b4cd, type: 2}
+  _slidingMat: {fileID: 6200000, guid: 8a4dba9a1ffc52648a2b7eb236a32825, type: 2}
+  _player: {fileID: 1627082453}
 --- !u!1 &2021349948
 GameObject:
   m_ObjectHideFlags: 0

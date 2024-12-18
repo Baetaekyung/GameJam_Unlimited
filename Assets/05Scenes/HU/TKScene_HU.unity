@@ -1747,6 +1747,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3226955539614716738, guid: d2ddf2880cdf5434890807250a7fa900, type: 3}
   m_PrefabInstance: {fileID: 2495886508697240094}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2133854517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2198785829576997337, guid: 262fae6b997e3274eaf39853fcc85caf, type: 3}
+  m_PrefabInstance: {fileID: 2338629599087967547}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449690b0db2befb4d998fed3cb18299e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &223189100382938801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1912,7 +1923,7 @@ PrefabInstance:
     - target: {fileID: 5938290114592888174, guid: dcf09e0f5329e9942b40a33a87c7572f, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2133854517}
     - target: {fileID: 6534536979511901904, guid: dcf09e0f5329e9942b40a33a87c7572f, type: 3}
       propertyPath: m_Name
       value: Sliding_Platform
@@ -2105,6 +2116,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5915076307080917510, guid: ea985ea5267dae146b20e944ffaa9113, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6971219206094805776, guid: ea985ea5267dae146b20e944ffaa9113, type: 3}
       propertyPath: m_Name
       value: Cloud_Platform
@@ -2222,6 +2237,10 @@ PrefabInstance:
     - target: {fileID: 4303880560541165388, guid: 372afab118d5136438dd1e175aef6795, type: 3}
       propertyPath: m_Name
       value: Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166704560001754193, guid: 372afab118d5136438dd1e175aef6795, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6570254313082660329, guid: 372afab118d5136438dd1e175aef6795, type: 3}
       propertyPath: m_LocalPosition.x

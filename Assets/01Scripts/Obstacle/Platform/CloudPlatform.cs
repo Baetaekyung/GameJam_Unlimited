@@ -5,14 +5,14 @@ public class CloudPlatform : MonoBehaviour
 {
     [SerializeField] private float _fadeDuration = 1f; // 사라지고 나타나는데 걸리는 시간
     [SerializeField] private float _waitTime = 2f;     // 기다리는 시간
-    private Renderer _renderer;
+    private SpriteRenderer _renderer;
     private Collider2D _collider;
 
     private bool _isFading = false; // 사라지고 있거나 이미 사라졌니?
 
     private void Awake()
     {
-        _renderer = GetComponent<Renderer>();
+        _renderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
     }
 
@@ -28,7 +28,7 @@ public class CloudPlatform : MonoBehaviour
     private IEnumerator FadeOut()
     {
         float elapsedTime = 0f;
-        Color color = _renderer.material.color;
+        Color color = _renderer.color;
 
         // 사라지는 애니메이션
         while (elapsedTime < _fadeDuration)
@@ -36,12 +36,12 @@ public class CloudPlatform : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float alpha = Mathf.Lerp(1f, 0f, elapsedTime / _fadeDuration);
             color.a = alpha;
-            _renderer.material.color = color;
+            _renderer.color = color;
             yield return null;
         }
 
         color.a = 0f;
-        _renderer.material.color = color;
+        _renderer.color = color;
 
         _collider.enabled = false;
 
@@ -54,19 +54,19 @@ public class CloudPlatform : MonoBehaviour
     private IEnumerator FadeIn()
     {
         float elapsedTime = 0f;
-        Color color = _renderer.material.color;
+        Color color = _renderer.color;
 
         while (elapsedTime < 2)
         {
             elapsedTime += Time.deltaTime;
             float alpha = Mathf.Lerp(0f, 1f, elapsedTime / 2);
             color.a = alpha;
-            _renderer.material.color = color;
+            _renderer.color = color;   
             yield return null;
         }
 
         color.a = 1f;
-        _renderer.material.color = color;
+        _renderer.color = color;
 
         _collider.enabled = true;
 

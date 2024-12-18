@@ -22,12 +22,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Item/ItemInvisible.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Item/ItemJetpack.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Item/ItemSpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Obstacle/BulletMaker/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Obstacle/BulletMaker/BulletMaker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Obstacle/CircleObject/Mace.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Obstacle/CircleObject/RotatePivot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Obstacle/Laser/LaserCollider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Obstacle/Laser/LaserObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Obstacle/PushObject/Pusher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -105,6 +107,7 @@
       <workItem from="1732239821861" duration="361000" />
       <workItem from="1734449223564" duration="297000" />
       <workItem from="1734481900920" duration="17268000" />
+      <workItem from="1734512589583" duration="1999000" />
     </task>
     <servers />
   </component>

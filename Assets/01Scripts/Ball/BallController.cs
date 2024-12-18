@@ -7,10 +7,15 @@ public class BallController : MonoBehaviour
 {
     public Rigidbody2D RbCompo { get; private set; }
 
+    private readonly int _dissolveHeight = Shader.PropertyToID("_DissolveHeight");
+    
     private BallInputController _inputController;
     private LineRenderer _lineRenderer;
     [field: SerializeField] public bool IsInvisible { get; set; } = false;
 
+    [SerializeField] private Material _dissolveMaterial;
+    [SerializeField] private GameObject _deadEffect;
+    
     [SerializeField] private float _invisibleTime;
     private float _currentInvisibleTime = 0f;
 
@@ -28,6 +33,8 @@ public class BallController : MonoBehaviour
 
     private void Start()
     {
+        _dissolveMaterial.SetFloat(_dissolveHeight, 1f);
+        
         _inputController.OnShootEvent += HandleShootEvent;
         _inputController.OnDragEvent += HandleDragEvent;
         _inputController.OnJetpackEvent += HandleJetpackEvent;
@@ -94,17 +101,40 @@ public class BallController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            if (shootCount == 0)
-            {
-                SetShootCount(1);
-            }
+            SetShootCount(1);
         }
     }
 
     public void Dead()
     {
         if (IsInvisible is true) return;
-        
-        Debug.Log("Dead");
+
+        StartCoroutine(nameof(DeadRoutine));
+    }
+
+    private IEnumerator DeadRoutine()
+    {
+        bool instantEffect = false;
+        float val = 1f;
+
+        SetShootCount(0);
+        RbCompo.velocity = Vector2.zero;
+        RbCompo.isKinematic = true;
+
+        while (val > -0.5f)
+        {
+            val -= Time.deltaTime;
+            _dissolveMaterial.SetFloat(_dissolveHeight, val);
+
+            if (val <= 0 && instantEffect is false)
+            {
+                Instantiate(_deadEffect, transform.position, Quaternion.identity);
+                instantEffect = true;
+            }
+            
+            yield return null;
+        }
+            
+        Debug.Log("Player Dead");
     }
 }

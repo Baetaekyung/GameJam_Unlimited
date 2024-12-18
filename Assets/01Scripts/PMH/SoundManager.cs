@@ -8,10 +8,10 @@ using UnityEngine.UI;
 
 public enum SfxType
 {
-    BGM = 0, EFFECT = 1
+    BGM = 0, EFFECT = 1, BALLDETECT, BALLJUMP
 }
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : MonoSingleton<SoundManager>
 {
     [SerializeField] private Slider vfxController;
     [SerializeField] private Slider bgmController;
@@ -23,7 +23,7 @@ public class SoundManager : MonoBehaviour
     public AudioMixerGroup MasterGroup;
     public AudioMixerGroup BGMGroup;
     public AudioMixerGroup SFXGroup;
-    //ÇÏ´ÂÁß
+    //ï¿½Ï´ï¿½ï¿½ï¿½
 
     private readonly string sound_master = "Master";
     private readonly string sound_bgm = "BGM";
@@ -43,8 +43,9 @@ public class SoundManager : MonoBehaviour
     private AudioSource[] _sfxPlayers;
     private int _channelIndex;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         Init();
         bgmController.value = 0.5f;
         vfxController.value = 0.5f;
@@ -72,7 +73,7 @@ public class SoundManager : MonoBehaviour
 
     private void Init()
     {
-        //¹è°æÀ½ ÃÊ±âÈ­
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         GameObject bgmObject = new GameObject("BgmPlayers");
         bgmObject.transform.parent = transform;
         bgmPlayer = bgmObject.AddComponent<AudioSource>();
@@ -82,7 +83,7 @@ public class SoundManager : MonoBehaviour
         bgmPlayer.clip = bgmClip;
         bgmPlayer.Play();
 
-        //È¿°úÀ½ ÇÃ·¹ÀÌ¾î ÃÊ±âÈ­
+        //È¿ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ê±ï¿½È­
         GameObject sfxObject = new GameObject("SfxPlayer");
         sfxObject.transform.parent = transform;
         _sfxPlayers = new AudioSource[channels];

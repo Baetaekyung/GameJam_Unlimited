@@ -26,6 +26,8 @@ public class LevelManage : MonoBehaviour
 
         SetLockedLevelSlot();
         SetClearLevleSlot();
+
+        EasyLevelOpen();
     }
 
     public void SetLockedLevelSlot()
@@ -47,4 +49,22 @@ public class LevelManage : MonoBehaviour
     }
 
     //레벨 선택 버튼 해서 셋액티브하기
+    public void EasyLevelOpen()
+    {
+        easyLevel.gameObject.SetActive(true);
+        normalLevel.gameObject.SetActive(false);
+        hardLevel.gameObject.SetActive(false);
+    }
+    public void NormalLevelOpen()
+    {
+        easyLevel.gameObject.SetActive(false);
+        normalLevel.gameObject.SetActive(true);
+        hardLevel.gameObject.SetActive(false);
+    }
+    public void HardLevelOpen()
+    {
+        easyLevel.gameObject.SetActive(false);
+        normalLevel.gameObject.SetActive(false);
+        hardLevel.gameObject.SetActive(true);
+    }
 }

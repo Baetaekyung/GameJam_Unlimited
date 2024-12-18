@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManage : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class LevelManage : MonoBehaviour
     [SerializeField] private List<LevelSlot> levels = new List<LevelSlot>();
 
     private int currentLevel = 0;
+
+    [Header("LevelsButtons")]
+    [SerializeField] private Transform easyLevel;
+    [SerializeField] private Transform normalLevel;
+    [SerializeField] private Transform hardLevel;
 
     private void OnEnable()
     {
@@ -39,4 +45,6 @@ public class LevelManage : MonoBehaviour
 
         levels[currentLevel].SetLevelType(LevelSlotType.Opend);
     }
+
+    //레벨 선택 버튼 해서 셋액티브하기
 }

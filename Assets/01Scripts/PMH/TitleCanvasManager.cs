@@ -19,6 +19,9 @@ public class TitleCanvasManager : MonoBehaviour
     private float lastTurnTime = 0;
     private float turnningCooldown = 1f;
 
+    [SerializeField] private float titleSceneXPos, selectLevelSceneXPos, settingSceneXPos, shopSceneXPos;
+    private float currenPosX;
+
     private void Awake()
     {
         if(Instance == null)
@@ -35,19 +38,21 @@ public class TitleCanvasManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (CheckIsTurnningEnd())
-            {
-                lastTurnTime = Time.time;
-                SetChangeView(90);
-            }
+            //if (CheckIsTurnningEnd())
+            //{
+            //    lastTurnTime = Time.time;
+            //    SetChangeView(90);
+            //}
+            SlideScene(1);
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (CheckIsTurnningEnd())
-            {
-                lastTurnTime = Time.time;
-                SetChangeView(-90);
-            }
+            //if (CheckIsTurnningEnd())
+            //{
+            //    lastTurnTime = Time.time;
+            //    SetChangeView(-90);
+            //}
+            SlideScene(-1);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -55,7 +60,46 @@ public class TitleCanvasManager : MonoBehaviour
             SestSettingView();
         }
 
-        RotateView();
+        //RotateView();
+        SlideView();
+    }
+    private void SlideScene(int v)
+    {
+        currentScene += v;
+
+        if(currentScene > 4)
+        {
+            currentScene = 4;
+        }
+
+        if (currentScene <= 0)
+        {
+            currentScene = 1;
+        }
+        switch (currentScene)
+        {
+            case 1:
+                SceneStatus.Instance.ChangeSceneState(SceneStateType.InGame); //90
+                currenPosX = titleSceneXPos;
+                break;
+            case 2:
+                SceneStatus.Instance.ChangeSceneState(SceneStateType.SelectLevel); //180
+                currenPosX = selectLevelSceneXPos;
+                break;
+            case 3:
+                SceneStatus.Instance.ChangeSceneState(SceneStateType.Setting); //270
+                currenPosX = settingSceneXPos;
+                break;
+            case 4:
+                SceneStatus.Instance.ChangeSceneState(SceneStateType.Store); //0
+                currenPosX = shopSceneXPos;
+                break;
+        }
+    }
+    private void SlideView()
+    {
+        // 부드럽게 회전
+        RectTrm.anchoredPosition = new Vector2(-currenPosX, 0);
     }
     private bool CheckIsTurnningEnd()
     {

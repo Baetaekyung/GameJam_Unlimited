@@ -69,7 +69,7 @@ public class BallController : MonoBehaviour
 
     private void HandleDragEvent(Vector2 direction, float force)
     {
-        _lineRenderer.SetPosition(0,  direction.normalized * -force);
+        _lineRenderer.SetPosition(0,  direction);
         _lineRenderer.SetPosition(1, transform.position);
     }
 
@@ -80,6 +80,7 @@ public class BallController : MonoBehaviour
         _lineRenderer.SetPosition(0, Vector3.zero);
         _lineRenderer.SetPosition(1,  Vector3.zero);
 
+        SoundManager.Instance.PlayerSFX(SfxType.BALLJUMP);
         RbCompo.velocity = Vector2.zero;
         RbCompo.AddForce(direction.normalized * force, ForceMode2D.Impulse);
         SetShootCount(shootCount - 1);
@@ -101,6 +102,8 @@ public class BallController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
+            SoundManager.Instance.PlayerSFX(SfxType.BALLDETECT);
+            
             if (shootCount > 0) return;
 
             SetShootCount(1);

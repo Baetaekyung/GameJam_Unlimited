@@ -2115,7 +2115,7 @@ MonoBehaviour:
   MasterGroup: {fileID: 24300002, guid: 44881ac655829c1448667a14385c4c54, type: 2}
   BGMGroup: {fileID: -4880218638026754427, guid: 44881ac655829c1448667a14385c4c54, type: 2}
   SFXGroup: {fileID: -1406009992096643050, guid: 44881ac655829c1448667a14385c4c54, type: 2}
-  bgmClip: {fileID: 8300000, guid: ac06f341564bfda439acb4c76bf4c5bf, type: 3}
+  bgmClip: {fileID: 8300000, guid: 12f89101751335a46b1afaecc667f5b0, type: 3}
   sfxClipSO:
   - {fileID: 11400000, guid: ee39425a0dfcd4a449345d3b2a33314d, type: 2}
   - {fileID: 11400000, guid: b063b40b5f7be5e4480d8ab373506c06, type: 2}

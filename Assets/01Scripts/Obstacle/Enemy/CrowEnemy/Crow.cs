@@ -18,10 +18,13 @@ public class Crow : Enemy
 
     private Transform _child;
 
+    private PolygonCollider2D _collider;
+
     private void Awake()
     {
         _child = transform.GetChild(0).transform;
         _spriteRenderer = _child.GetComponent<SpriteRenderer>();
+        _collider = GetComponent<PolygonCollider2D>();
     }
 
     protected override void Update()
@@ -67,9 +70,14 @@ public class Crow : Enemy
         // 페이드 효과 적용
         ApplyFadeInEffect();
 
+        _child.position = _player.transform.position;
+        _child.localScale = new Vector3(_child.localScale.x, _distanceToPlayer * 2, _child.localScale.z);
+
         // 돌진 목표 지점 계산
         Vector2 direction = (_player.transform.position - transform.position).normalized;
         _dashPos = (Vector2)transform.position + direction * (Vector2.Distance(transform.position, _player.transform.position) * 2f);
+
+
 
         // 대기 시간 감소
         _preparationTimer -= Time.deltaTime;
@@ -104,10 +112,8 @@ public class Crow : Enemy
         // 목표 지점에 도달하면 대쉬 종료
         if (distanceToTarget < 0.1f)
         {
-            _isDashing = false;
-
-            // 오브젝트 삭제
-            Destroy(gameObject);
+            _collider.enabled = false;
+            Dead();
         }
     }
 

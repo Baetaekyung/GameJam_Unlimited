@@ -8,10 +8,11 @@ public class GoTitleSceneButton : MonoBehaviour, IPointerDownHandler
 {
     public void OnPointerDown(PointerEventData eventData)
     {
-        FadeSceneChanger.Instance.FadeIn(1f, () =>
+        Time.timeScale = 1f;
+        FadeSceneChanger.Instance.FadeIn(0f, () =>
         {
             SceneManager.LoadScene("TItleScene_PMH");
-            Time.timeScale = 1f;
+            
         });
     }
 }

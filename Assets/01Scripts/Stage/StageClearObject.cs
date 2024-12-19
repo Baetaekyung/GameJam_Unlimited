@@ -39,11 +39,10 @@ public class StageClearObject : MonoBehaviour
 
             offset += int.Parse(str[1]);
 
-            Debug.Log(offset + " 네 맞아요 ");
+            Debug.Log(offset + " 번째 씬을 저장합니다");
+            GameManager.Instance.SetCurrentSceneNumber(offset);
 
-            GameManager.currentSceneNumber = offset;
-
-            GameManager.Instance.SetStageClear(offset);
+            //GameManager.Instance.SetStageClear(offset);
 
             _isStageCleared = true;
 

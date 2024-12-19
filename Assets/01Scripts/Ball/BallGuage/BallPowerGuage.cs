@@ -30,9 +30,4 @@ public class BallPowerGuage : MonoBehaviour
     {
         _guageTrm.localScale = new Vector2((_ballInput.GetForce / _ballInput.GetMaxForce), 1f);
     }
-
-    private void OnDestroy()
-    {
-        _ballInput.OnDragEndEvent -= HandleDragEnd;
-    }
 }

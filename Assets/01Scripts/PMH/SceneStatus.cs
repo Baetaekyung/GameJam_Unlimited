@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum SceneStateType
 {
-    Setting, Store, InGame, SelectLevel, Tip
+    Title, Challenge, Timeattck, Setting, Tip1, Tip2
 }
 public class SceneStatus : MonoBehaviour
 {
@@ -30,21 +30,20 @@ public class SceneStatus : MonoBehaviour
         //Debug.Log(sst.ToString() + "스테이트 입니다");
         sceneState = sst;
 
-        if(sceneState == SceneStateType.Setting)
+        switch (sst)
         {
-            //Time.timeScale = 0f;
-        }
-        else if(sceneState == SceneStateType.Store)
-        {
-
-        }
-        else if( sceneState == SceneStateType.InGame)
-        {
-
-        }
-        else if(sceneState == SceneStateType.SelectLevel)
-        {
-
+            case SceneStateType.Title:
+                break;
+            case SceneStateType.Challenge:
+                break;
+            case SceneStateType.Timeattck:
+                break;
+            case SceneStateType.Setting:
+                break;
+            case SceneStateType.Tip1:
+                break;
+            case SceneStateType.Tip2:
+                break;
         }
     }
 }

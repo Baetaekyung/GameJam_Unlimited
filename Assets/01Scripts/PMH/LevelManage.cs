@@ -59,7 +59,7 @@ public class LevelManage : MonoBehaviour
     {
         for (int i = 1; i <= easyLevels.Count; i++)
         {
-            //Debug.Log($"{i + 0} ¹øÂ° ÀÌÁö ¸Ê");
+            //Debug.Log($"{i + 0} ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½");
             if (GameManager.Instance.IsClearStage(i) == false)
             {
                 easyLevels[i - 1].SetLevelType(LevelSlotType.Closed);
@@ -68,7 +68,7 @@ public class LevelManage : MonoBehaviour
         
         for (int i = 1; i <= easyLevels.Count; i++)
         {
-            //Debug.Log($"{i + 0} ¹øÂ° ÀÌÁö ¸Ê");
+            //Debug.Log($"{i + 0} ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½");
             if (GameManager.Instance.IsClearStage(i))
             {
                 easyLevels[i - 1].SetLevelType(LevelSlotType.Cleard);
@@ -77,7 +77,7 @@ public class LevelManage : MonoBehaviour
         }
 
 
-        //¿­¾îÁá´ø°É ´Ù½Ã ´Ý´Â ·¹Àüµå ¾öÄÚµå
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½Ý´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½
         //----------------------------------------------------------------
         for (int i = 1; i <= normalLevels.Count; i++)
         {
@@ -126,7 +126,7 @@ public class LevelManage : MonoBehaviour
         //levels[currentLevel].SetLevelType(LevelSlotType.Opend);
     }
 
-    //·¹º§ ¼±ÅÃ ¹öÆ° ÇØ¼­ ¼Â¾×Æ¼ºêÇÏ±â
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½Ø¼ï¿½ ï¿½Â¾ï¿½Æ¼ï¿½ï¿½ï¿½Ï±ï¿½
     public void EasyLevelOpen()
     {
         easyLevel.gameObject.SetActive(true);

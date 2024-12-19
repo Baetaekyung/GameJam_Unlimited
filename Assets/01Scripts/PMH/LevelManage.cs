@@ -32,11 +32,10 @@ public class LevelManage : MonoBehaviour
         SetClearLevleSlot();
 
         EasyLevelOpen();
-    }
 
-    private void Update()
-    {
         CheckLevelsCleared();
+
+        easyLevels[0].SetLevelType(LevelSlotType.Opend);
     }
 
     private void GetChilds()
@@ -78,6 +77,8 @@ public class LevelManage : MonoBehaviour
                     {
                         break;
                     }
+                    GameManager.currentSceneNumber = i + 2;
+                    Debug.Log(GameManager.currentSceneNumber + " : 번째 씬 저장밍");
                     easyLevels[i + 1].SetLevelType(LevelSlotType.Opend);
                 }
             }
@@ -106,6 +107,8 @@ public class LevelManage : MonoBehaviour
                     {
                         break;
                     }
+                    GameManager.currentSceneNumber = i + 12;
+                    Debug.Log(GameManager.currentSceneNumber + " : 번째 씬 저장밍");
                     normalLevels[i + 1].SetLevelType(LevelSlotType.Opend);
                 }
             }
@@ -133,9 +136,21 @@ public class LevelManage : MonoBehaviour
                     {
                         break;
                     }
+                    GameManager.currentSceneNumber = i + 42;
+                    Debug.Log(GameManager.currentSceneNumber + " : 번째 씬 저장밍");
                     hardLevels[i + 1].SetLevelType(LevelSlotType.Opend);
                 }
             }
+        }
+
+        if (GameManager.currentSceneNumber == 10)
+        {
+            normalLevels[0].SetLevelType(LevelSlotType.Opend);
+        }
+
+        if (GameManager.currentSceneNumber == 30)
+        {
+            hardLevels[0].SetLevelType(LevelSlotType.Opend);
         }
     }
 

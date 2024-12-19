@@ -62,4 +62,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/05Scenes/MH/Maps/Normal_8.unity
     guid: 32c9f012e4fa8a7499a0f3e519320c2b
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Hard_1.unity
+    guid: 84f01fef214684b49a59ed5547bedcf0
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Hard_2.unity
+    guid: 4abcd6926b4aad64db8889c2e4aa2406
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Hard_3.unity
+    guid: a8951319d58945e45b0adc7baa5816e6
   m_configObjects: {}

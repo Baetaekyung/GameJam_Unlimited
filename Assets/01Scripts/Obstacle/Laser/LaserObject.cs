@@ -21,7 +21,9 @@ public class LaserObject : MonoBehaviour
         {
             yield return new WaitForSeconds(_laserCoolTime);
             laserPrefab.SetActive(true);
+            SoundManager.Instance.PlayerSFX(SfxType.LASERACTIVE);
             yield return new WaitForSeconds(_laserDuration);
+            SoundManager.Instance.PlayerSFX(SfxType.LASERACTIVE);
             laserPrefab.SetActive(false);
         }
     }

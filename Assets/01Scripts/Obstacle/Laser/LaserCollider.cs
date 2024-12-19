@@ -9,6 +9,7 @@ public class LaserCollider : MonoBehaviour
     {
         if (other.TryGetComponent(out BallController ball))
         {
+            SoundManager.Instance.PlayerSFX(SfxType.LASERHIT);
             ball.Dead();
         }
     }

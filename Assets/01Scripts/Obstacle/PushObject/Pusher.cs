@@ -20,6 +20,7 @@ public class Pusher : MonoBehaviour
         {
             ball.AddForce(transform.up, _pushForce, ForceMode2D.Impulse);
             _animator.SetTrigger("Push");
+            SoundManager.Instance.PlayerSFX(SfxType.JUMPPAD);
         }
     }
 }

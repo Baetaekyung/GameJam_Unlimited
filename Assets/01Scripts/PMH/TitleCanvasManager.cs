@@ -97,6 +97,8 @@ public class TitleCanvasManager : MonoBehaviour
                 currenPosX = shopSceneXPos;
                 break;
         }
+
+        SoundManager.Instance.SetVolumes();
     }
     private void SlideView()
     {

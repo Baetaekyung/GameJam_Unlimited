@@ -18,14 +18,12 @@ public class InfiniteMapManager : MonoSingleton<InfiniteMapManager>
 {
     public int height = 0;
     [SerializeField] private TextMeshProUGUI _heightText;
-    [SerializeField] private TextMeshProUGUI _windInfoText;
     [SerializeField] private TextMeshProUGUI _maxScoreText;
     
     private StringBuilder _sb = new StringBuilder();
     private StringBuilder _sb2 = new StringBuilder();
     
     [SerializeField] private GameObject _deadObject;
-    [SerializeField] private Wind _wind;
     
     [SerializeField] private MapDataSO mapDataSO;
     [SerializeField] private int _initialMapSize = 10;
@@ -65,7 +63,6 @@ public class InfiniteMapManager : MonoSingleton<InfiniteMapManager>
     private void Start()
     {
         StartCoroutine(nameof(StartDeadMove));
-        StartCoroutine(nameof(StartWind));
     }
 
     public void UpHeight()
@@ -104,30 +101,6 @@ public class InfiniteMapManager : MonoSingleton<InfiniteMapManager>
         {
             go.transform.position += new Vector3(0f, 2f * Time.deltaTime, 0f);
             yield return _waitForEndOfFrame;
-        }
-    }
-
-    private IEnumerator StartWind()
-    {
-        yield return new WaitForSeconds(30f);
-        Debug.Log("Wind start");
-
-        while (true)
-        {
-            _sb2.Clear();
-            
-            _wind.windForce = Random.Range(30f, 100f);
-            _wind.windDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-            
-            _sb2.Append($"Wind force: {Mathf.RoundToInt(_wind.windForce)}");
-            _sb2.Append('\n');
-            _sb2.Append($"Wind direction x : {Mathf.Round(_wind.windDirection.x)}");
-            _sb2.Append('\n');
-            _sb2.Append($"Wind direction y : {Mathf.Round(_wind.windDirection.y)}");
-            
-            _windInfoText.text = _sb2.ToString();
-            
-            yield return new WaitForSeconds(10f);
         }
     }
 

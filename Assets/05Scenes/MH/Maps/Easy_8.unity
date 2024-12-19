@@ -139,13 +139,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3417005474131071778, guid: 245ce7e57bddd7948aa9927f9405422e, type: 3}
+      propertyPath: _nextStageName
+      value: Easy_9
+      objectReference: {fileID: 0}
     - target: {fileID: 5684307645020447381, guid: 245ce7e57bddd7948aa9927f9405422e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.8
+      value: -0.6197672
       objectReference: {fileID: 0}
     - target: {fileID: 5684307645020447381, guid: 245ce7e57bddd7948aa9927f9405422e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.8999996
+      value: -1.7867899
       objectReference: {fileID: 0}
     - target: {fileID: 5701444795156388716, guid: 245ce7e57bddd7948aa9927f9405422e, type: 3}
       propertyPath: m_AnchorMax.y

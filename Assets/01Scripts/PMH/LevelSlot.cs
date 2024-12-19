@@ -40,7 +40,7 @@ public class LevelSlot : MonoBehaviour
                 break;
             case LevelSlotType.Cleard:
                 {
-                    levelAmountTxt.color = Color.green;
+                    levelAmountTxt.color = Color.white;
                 }
                 break;
             case LevelSlotType.Closed:

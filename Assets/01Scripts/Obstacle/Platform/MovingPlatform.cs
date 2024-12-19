@@ -161,6 +161,8 @@ public class MovingPlatform : MonoBehaviour
                 while (transform.position.y > _startPosition.y)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, _startPosition.y, transform.position.z), _moveSpeed * Time.deltaTime);
+                    Debug.Log(gameObject.name + "원점가는중");
+                    
                     yield return null;
                 }
 
@@ -180,6 +182,7 @@ public class MovingPlatform : MonoBehaviour
                 while (transform.position.y < _startPosition.y)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, _startPosition.y, transform.position.z), _moveSpeed * Time.deltaTime);
+                    Debug.Log(gameObject.name + "원점가는중");
                     yield return null;
                 }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum LevelSlotType
@@ -73,6 +74,7 @@ public class LevelSlot : MonoBehaviour
         ////map.gameObject.SetActive(true);
         Debug.Log("클릭밍");
         Debug.Log($"{levelData.levelDifficulty}_{transform.GetSiblingIndex()}");
+        SceneManager.LoadScene($"{levelData.levelDifficulty}_{transform.GetSiblingIndex()}");
 
         //입장밍
 

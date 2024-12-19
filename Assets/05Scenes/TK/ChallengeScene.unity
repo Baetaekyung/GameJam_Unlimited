@@ -2819,6 +2819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449690b0db2befb4d998fed3cb18299e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isTitleRevive: 1
   _lineResolution: 50
   _poolManagerSO: {fileID: 11400000, guid: deabfba34c014f0489aaeb414bbe0af7, type: 2}
   <IsInvisible>k__BackingField: 0

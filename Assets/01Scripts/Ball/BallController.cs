@@ -9,6 +9,8 @@ public class BallController : MonoBehaviour
     public Rigidbody2D RbCompo { get; private set; }
 
     private readonly int _dissolveHeight = Shader.PropertyToID("_DissolveHeight");
+
+    [SerializeField] private bool _isTitleRevive = false;
     
     private BallInputController _inputController;
     private LineRenderer _lineRenderer;
@@ -200,8 +202,15 @@ public class BallController : MonoBehaviour
                 FadeSceneChanger.Instance.FadeIn(1f, () =>
                 {
                     //�ο��
-                    Scene cs = SceneManager.GetActiveScene();
-                    SceneManager.LoadScene(cs.name);
+                    if (_isTitleRevive)
+                    {
+                        SceneManager.LoadScene("TItleScene_PMH");
+                    }
+                    else
+                    {
+                        Scene cs = SceneManager.GetActiveScene();
+                        SceneManager.LoadScene(cs.name);
+                    }
                 });
             }
             

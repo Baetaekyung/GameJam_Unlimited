@@ -23,25 +23,30 @@ public class LevelManage : MonoBehaviour
     [SerializeField] private Transform normalLevel;
     [SerializeField] private Transform hardLevel;
 
-    private readonly int easyLeveloffset = 1;
-    private readonly int normalLeveloffset = 100;
-    private readonly int hardLeveloffset = 400;
+    private int easyLeveloffset;
+    private int normalLeveloffset;
+    private int hardLeveloffset;
 
     private void Awake()
     {
         GetChilds();
 
-        CheckLevelsClreard();
+        CheckLevelsCleared();
         SetClearLevleSlot();
 
         EasyLevelOpen();
+    }
+
+    private void Update()
+    {
+        CheckLevelsCleared();
     }
 
     private void GetChilds()
     {
         for (int i = 0; i < easyLevelParent.childCount; i++)
         {
-            easyLevels.Add(normalLevelParent.GetChild(i).GetComponent<LevelSlot>());
+            easyLevels.Add(easyLevelParent.GetChild(i).GetComponent<LevelSlot>());
         }
         for (int i = 0; i < normalLevelParent.childCount; i++)
         {
@@ -49,59 +54,66 @@ public class LevelManage : MonoBehaviour
         }
         for (int i = 0; i < hardLevelParent.childCount; i++)
         {
-            hardLevels.Add(normalLevelParent.GetChild(i).GetComponent<LevelSlot>());
+            hardLevels.Add(hardLevelParent.GetChild(i).GetComponent<LevelSlot>());
         }
     }
-    public void CheckLevelsClreard()
+    public void CheckLevelsCleared()
     {
-        for (int i = 0; i < easyLevels.Count; i++)
+        for (int i = 1; i <= easyLevels.Count; i++)
         {
-            Debug.Log($"{i + easyLeveloffset} 번째 이지 맵");
-            if (GameManager.Instance.IsClearStage(i + easyLeveloffset))
+            //Debug.Log($"{i + 0} 번째 이지 맵");
+            if (GameManager.Instance.IsClearStage(i) == false)
             {
-                easyLevels[i].SetLevelType(LevelSlotType.Cleard);
-                if (easyLevels[i + 1] != null)
-                {
-                    easyLevels[i + 1].SetLevelType(LevelSlotType.Opend); //클리어한 다음 스테이지 열어주기
-                }
-            }
-            else
-            {
-                easyLevels[i].SetLevelType(LevelSlotType.Closed);
+                easyLevels[i - 1].SetLevelType(LevelSlotType.Closed);
             }
         }
-        //----------------------------------------------------------------
-        for (int i = 0; i < normalLevels.Count; i++)
+        
+        for (int i = 1; i <= easyLevels.Count; i++)
         {
-            Debug.Log($"{i + normalLeveloffset} 번째 노말 맵");
-            if (GameManager.Instance.IsClearStage(i + normalLeveloffset))
+            //Debug.Log($"{i + 0} 번째 이지 맵");
+            if (GameManager.Instance.IsClearStage(i))
             {
-                normalLevels[i].SetLevelType(LevelSlotType.Cleard);
-                if (normalLevels[i + 1] != null)
-                {
-                    normalLevels[i + 1].SetLevelType(LevelSlotType.Opend); //클리어한 다음 스테이지 열어주기
-                }
-            }
-            else
-            {
-                normalLevels[i].SetLevelType(LevelSlotType.Closed);
+                easyLevels[i - 1].SetLevelType(LevelSlotType.Cleard);
+                easyLevels[i].SetLevelType(LevelSlotType.Opend);
             }
         }
+
+
+        //열어줬던걸 다시 닫는 레전드 엄코드
         //----------------------------------------------------------------
-        for (int i = 0; i < hardLevels.Count; i++)
+        for (int i = 1; i <= normalLevels.Count; i++)
         {
-            Debug.Log($"{i + hardLeveloffset} 번째 하드 맵");
-            if (GameManager.Instance.IsClearStage(i + hardLeveloffset))
+            if (GameManager.Instance.IsClearStage(i + 10) == false)
             {
-                hardLevels[i].SetLevelType(LevelSlotType.Cleard);
-                if (hardLevels[i + 1] != null)
-                {
-                    hardLevels[i + 1].SetLevelType(LevelSlotType.Opend); //클리어한 다음 스테이지 열어주기
-                }
+                normalLevels[i - 1].SetLevelType(LevelSlotType.Closed);
             }
-            else
+        }
+
+        for (int i = 1; i <= normalLevels.Count; i++)
+        {
+            if (GameManager.Instance.IsClearStage(i + 10))
             {
-                hardLevels[i].SetLevelType(LevelSlotType.Closed);
+                normalLevels[i - 1].SetLevelType(LevelSlotType.Cleard);
+                normalLevels[i].SetLevelType(LevelSlotType.Opend);
+            }
+        }
+
+
+        //----------------------------------------------------------------
+        for (int i = 1; i <= hardLevels.Count; i++)
+        {
+            if (GameManager.Instance.IsClearStage(i + 40) == false)
+            {
+                hardLevels[i - 1].SetLevelType(LevelSlotType.Closed);
+            }
+        }
+
+        for (int i = 1; i <= hardLevels.Count; i++)
+        {
+            if (GameManager.Instance.IsClearStage(i + 40))
+            {
+                hardLevels[i - 1].SetLevelType(LevelSlotType.Cleard);
+                hardLevels[i].SetLevelType(LevelSlotType.Opend);
             }
         }
     }

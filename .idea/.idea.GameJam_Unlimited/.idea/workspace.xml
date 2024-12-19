@@ -16,7 +16,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Ball/BallGuage/BallPowerGuage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Ball/BallInputController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Ball/Effect/DetectEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Core/GameManager/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Core/PoolManager/ObjectPoolManagerSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Core/Wind/Wind.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Item/ItemBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Item/ItemDoubleJump.cs" root0="FORCE_HIGHLIGHTING" />
@@ -112,7 +114,7 @@
       <workItem from="1734449223564" duration="297000" />
       <workItem from="1734481900920" duration="17268000" />
       <workItem from="1734512589583" duration="7735000" />
-      <workItem from="1734565461254" duration="3290000" />
+      <workItem from="1734565461254" duration="5429000" />
     </task>
     <servers />
   </component>

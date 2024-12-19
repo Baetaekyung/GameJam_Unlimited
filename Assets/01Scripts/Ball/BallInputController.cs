@@ -22,7 +22,7 @@ public class BallInputController : MonoSingleton<BallInputController>
     private Vector2 _direction;
     
     public Vector2 GetDirection => _direction;
-
+    
     [SerializeField] private float _maxShootForce;
     public float GetMaxForce => _maxShootForce;
     [SerializeField] private float _shootForceDivider;

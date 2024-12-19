@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class Crow : Enemy
@@ -7,9 +5,10 @@ public class Crow : Enemy
     [SerializeField] private float minSpeed = 1f; // 목표 속도 (감속 후 최종 속도)
     [SerializeField] private float dashCooldown = 3f; // 돌진 후 휴식 시간
     [SerializeField] private float waitBeforeDash = 2f; // 대쉬 전 대기 시간
+    [SerializeField] private float destroyAfterTime = 10f; // 설정된 시간이 지나면 삭제
 
     private Vector2 _dashPos; // 이동하고자 하는 지점
-    private bool _isDashing = false; //대쉬중인가?
+    private bool _isDashing = false; // 대쉬 중인가?
     private float _cooldownTimer = 0f;
     private bool _isOnCooldown = false; // 쿨다운 중인가?
     private bool _isPreparingToDash = false;
@@ -23,17 +22,25 @@ public class Crow : Enemy
 
     private Transform _child;
 
+    private float _destroyTimer = 0f; // 오브젝트 삭제 타이머
 
     private void Awake()
     {
         _child = transform.GetChild(0).transform;
-
         _spriteRenderer = _child.GetComponent<SpriteRenderer>();
     }
 
     protected override void Update()
     {
         base.Update();
+
+        if (_destroyTimer >= destroyAfterTime)
+        {
+            Destroy(gameObject); // 설정된 시간 후에 삭제
+            return;
+        }
+
+        _destroyTimer += Time.deltaTime;
 
         if (_isDashing) Dash();
         else if (_isOnCooldown) Cooldown();
@@ -43,9 +50,9 @@ public class Crow : Enemy
 
     private void IdleAndDetectPlayer()
     {
-        if (IsPlayerInRange())
+        if (IsPlayerInRange() && !_isDashing)
         {
-            // 돌진 준비 상태로 전환
+            // 범위 내에 들어오면 대쉬 준비 시작
             _isPreparingToDash = true;
             _preparationTimer = waitBeforeDash;
         }
@@ -53,11 +60,17 @@ public class Crow : Enemy
 
     private void PrepareToDash()
     {
+        if (_isDashing)
+        {
+            return; // 대쉬가 이미 시작되었으면 대기하지 않음
+        }
+
         if (!IsPlayerInRange())
         {
+            // 플레이어가 범위 밖으로 나가면 대쉬 준비 취소
             _isPreparingToDash = false;
             DisableSprite();
-            return; // 대쉬 준비를 취소하고 함수 종료
+            return;
         }
 
         // 플레이어를 바라보며 대기
@@ -86,7 +99,6 @@ public class Crow : Enemy
         if (_preparationTimer <= 0)
         {
             DisableSprite();
-
             _isPreparingToDash = false;
             _isDashing = true;
 
@@ -143,7 +155,6 @@ public class Crow : Enemy
         }
     }
 
-
     private void ApplyFadeInEffect()
     {
         Color color = _spriteRenderer.color;
@@ -173,5 +184,11 @@ public class Crow : Enemy
 
     protected override bool IsPlayerInRange() { return base.IsPlayerInRange(); }
 
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out BallController player))
+        {
+            player.Dead();
+        }
+    }
 }

@@ -1652,6 +1652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isJetpack: 0
   jetpackDuration: 4
+  jetpackRemainTime: 0
   _maxShootForce: 30
   _shootForceDivider: 15
 --- !u!4 &1439355958
@@ -2125,10 +2126,6 @@ PrefabInstance:
     - target: {fileID: 5015252223777168796, guid: fa3f1cb0f3b0bb1459542a61bfe746d4, type: 3}
       propertyPath: m_Name
       value: KKamagi
-      objectReference: {fileID: 0}
-    - target: {fileID: 6870345335951965711, guid: fa3f1cb0f3b0bb1459542a61bfe746d4, type: 3}
-      propertyPath: moveSpeed
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

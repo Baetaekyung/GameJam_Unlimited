@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class BulletMaker : MonoBehaviour
 {
-    [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _bulletSpawnPoint;
-
+    [SerializeField] private ObjectPoolManagerSO _poolManagerSO;
+    
     [SerializeField] private float _shootDelay;
+    [SerializeField] private float _shootPower;
 
     private void Start()
     {
@@ -20,7 +21,10 @@ public class BulletMaker : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(_shootDelay);
-            Instantiate(_bulletPrefab, _bulletSpawnPoint.position, _bulletSpawnPoint.rotation);
+            GameObject go = _poolManagerSO.Spawn("Bullets", _bulletSpawnPoint.position, transform.rotation);
+            var bullet = go.GetComponent<Bullet>();
+            
+            bullet.RbCompo.AddForce(transform.right * _shootPower, ForceMode2D.Impulse);
         }
     }
 }

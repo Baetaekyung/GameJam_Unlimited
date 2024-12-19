@@ -3,18 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IPoolable
 {
-    [SerializeField] private float _speed;
-    
-    private void Start()
-    {
-        Destroy(gameObject, 12f);
-    }
+    public Rigidbody2D RbCompo => GetComponent<Rigidbody2D>();
+    [SerializeField] private ObjectPoolManagerSO _poolManagerSO;
+    private float _lifeTime = 10f;
 
     private void Update()
     {
-        transform.Translate(transform.right * (Time.deltaTime * _speed));
+        _lifeTime -= Time.deltaTime;
+        
+        if (_lifeTime <= 0)
+        {
+            _poolManagerSO.Despawn("Bullets", this.gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -22,7 +24,15 @@ public class Bullet : MonoBehaviour
         if (other.transform.TryGetComponent(out BallController ball))
         {
             ball.Dead();
-            Destroy(gameObject);
         }
+        _poolManagerSO.Despawn("Bullets", this.gameObject);
+    }
+
+    public void OnSpawn()
+    { }
+
+    public void OnDespawn()
+    {
+        _lifeTime = 10f;
     }
 }

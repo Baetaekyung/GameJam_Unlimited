@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleCanvasManager : MonoBehaviour
 {
@@ -38,6 +39,20 @@ public class TitleCanvasManager : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("관리자 권한으로 모든 레벨 잠금해제");
+            GameManager.Instance.SetCurrentSceneNumber(45);
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.name);
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("관리자 권한으로 모든 레벨 잠금");
+            GameManager.Instance.SetCurrentSceneNumber(1);
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.name);
+        }
         SlideView();
     }
 

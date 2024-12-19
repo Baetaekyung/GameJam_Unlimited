@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9067dcb3fe6bcb84ebbfb421b430c8fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 93432160010936346, guid: 695396c1c9370d6418a3eedddc8e4ff7, type: 3}
   _bulletSpawnPoint: {fileID: 249255958742027177}
-  _shootDelay: 7
+  _poolManagerSO: {fileID: 11400000, guid: deabfba34c014f0489aaeb414bbe0af7, type: 2}
+  _shootDelay: 1
+  _shootPower: 5

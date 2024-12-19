@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class StageClearObject : MonoBehaviour
 {
+    [SerializeField] private string _nextStageName;
     private bool _isStageCleared = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -14,11 +16,13 @@ public class StageClearObject : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             Debug.Log("StageClear");
-
-            //스테이지 클리어 UI 나타나기
-            SceneManager.LoadScene(0);
-
             _isStageCleared = true;
+
+            FadeSceneChanger.Instance.FadeIn(1f, () =>
+            {      
+                SceneManager.LoadScene(_nextStageName);
+            });
+
         }
     }
 }

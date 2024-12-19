@@ -17,3 +17,6 @@ MonoBehaviour:
   - poolName: DetectEffect
     prefab: {fileID: 1994774118526933249, guid: 18015ed8d021d1840b06ba808408c249, type: 3}
     initialSize: 8
+  - poolName: Bullets
+    prefab: {fileID: 93432160010936346, guid: 695396c1c9370d6418a3eedddc8e4ff7, type: 3}
+    initialSize: 20

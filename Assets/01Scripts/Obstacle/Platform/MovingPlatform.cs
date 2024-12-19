@@ -9,15 +9,13 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private float _moveSpeed = 2f;         // 이동 속도
     [SerializeField] private float _waitTime = 1f;          // 멈출 시간
 
-    private Vector3 _startPosition; // 시작 위치
+    [SerializeField] private bool _isRight = true;          // 오른쪽으로만 움직일지 여부
 
-    private Transform _playerTransform; // 플레이어의 Transform
-    private Vector3 _lastPlatformPosition; // 플랫폼의 이전 프레임 위치
+    private Vector3 _startPosition; // 시작 위치
 
     private void Start()
     {
         _startPosition = transform.position;  // 시작 위치 저장
-        _lastPlatformPosition = transform.position;
 
         if (_isHorizontal)
         {
@@ -30,20 +28,6 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        //if (_playerTransform != null)
-        //{
-        //    // 플랫폼의 이동량 계산
-        //    Vector3 platformMovement = transform.position - _lastPlatformPosition;
-
-        //    // 플레이어도 같은 이동량만큼 움직이게 설정
-        //    _playerTransform.position += platformMovement;
-        //}
-
-        //// 현재 플랫폼 위치를 저장
-        //_lastPlatformPosition = transform.position;
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
@@ -51,7 +35,6 @@ public class MovingPlatform : MonoBehaviour
             collision.transform.SetParent(transform);
         }
     }
-
 
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -61,61 +44,147 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        if (!Application.isPlaying) return;
+
+        Gizmos.color = Color.green;
+        Vector3 cubeSize = transform.localScale; // 사각형 크기를 오브젝트 스케일과 동일하게 설정
+
+        // 목표 지점을 계산
+        float rightX = _startPosition.x + _moveDistance;
+        float leftX = _startPosition.x - _moveDistance;
+        float topY = _startPosition.y + _moveDistance;
+        float bottomY = _startPosition.y - _moveDistance;
+
+        // 수평 이동일 때 목표 지점 표시
+        if (_isHorizontal)
+        {
+            if (_isRight)
+            {
+                Gizmos.DrawCube(new Vector3(rightX, _startPosition.y, 0f), cubeSize);
+            }
+            else
+            {
+                Gizmos.DrawCube(new Vector3(leftX, _startPosition.y, 0f), cubeSize);
+            }
+
+            // 시작 위치도 표시
+            Gizmos.color = Color.blue;
+            Gizmos.DrawCube(_startPosition, cubeSize);
+        }
+
+        // 수직 이동일 때 목표 지점 표시
+        if (_isVertical)
+        {
+            if (_isRight)
+            {
+                Gizmos.DrawCube(new Vector3(_startPosition.x, topY, 0f), cubeSize);
+            }
+            else
+            {
+                Gizmos.DrawCube(new Vector3(_startPosition.x, bottomY, 0f), cubeSize);
+            }
+
+            // 시작 위치도 표시
+            Gizmos.color = Color.blue;
+            Gizmos.DrawCube(_startPosition, cubeSize);
+        }
+    }
+
     private IEnumerator MoveHorizontalRoutine()
     {
-        float targetX = _startPosition.x + _moveDistance;
-        float initialX = _startPosition.x;
+        float rightX = _startPosition.x + _moveDistance; // 오른쪽 끝
+        float leftX = _startPosition.x - _moveDistance;  // 왼쪽 끝
 
         while (true)
         {
-            // 왼쪽에서 오른쪽으로 이동
-            while (transform.position.x < targetX)
+            if (_isRight)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetX, transform.position.y, transform.position.z), _moveSpeed * Time.deltaTime);
-                yield return null;
+                // 원점 ↔ 오른쪽 이동
+                while (transform.position.x < rightX)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(rightX, transform.position.y, transform.position.z), _moveSpeed * Time.deltaTime);
+                    yield return null;
+                }
+
+                yield return new WaitForSeconds(_waitTime);
+
+                while (transform.position.x > _startPosition.x)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(_startPosition.x, transform.position.y, transform.position.z), _moveSpeed * Time.deltaTime);
+                    yield return null;
+                }
+
+                yield return new WaitForSeconds(_waitTime);
             }
-
-            // 잠시 멈춤
-            yield return new WaitForSeconds(_waitTime);
-
-            // 오른쪽에서 왼쪽으로 이동
-            while (transform.position.x > initialX)
+            else
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(initialX, transform.position.y, transform.position.z), _moveSpeed * Time.deltaTime);
-                yield return null;
-            }
+                // 원점 ↔ 왼쪽 이동
+                while (transform.position.x > leftX)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(leftX, transform.position.y, transform.position.z), _moveSpeed * Time.deltaTime);
+                    yield return null;
+                }
 
-            // 잠시 멈춤
-            yield return new WaitForSeconds(_waitTime);
+                yield return new WaitForSeconds(_waitTime);
+
+                while (transform.position.x < _startPosition.x)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(_startPosition.x, transform.position.y, transform.position.z), _moveSpeed * Time.deltaTime);
+                    yield return null;
+                }
+
+                yield return new WaitForSeconds(_waitTime);
+            }
         }
     }
 
     private IEnumerator MoveVerticalRoutine()
     {
-        float targetY = _startPosition.y + _moveDistance;
-        float initialY = _startPosition.y;
+        float topY = _startPosition.y + _moveDistance;   // 위쪽 끝
+        float bottomY = _startPosition.y - _moveDistance; // 아래쪽 끝
 
         while (true)
         {
-            // 아래에서 위로 이동
-            while (transform.position.y < targetY)
+            if (_isRight)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, targetY, transform.position.z), _moveSpeed * Time.deltaTime);
-                yield return null;
+                // 원점 ↔ 위쪽 이동
+                while (transform.position.y < topY)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, topY, transform.position.z), _moveSpeed * Time.deltaTime);
+                    yield return null;
+                }
+
+                yield return new WaitForSeconds(_waitTime);
+
+                while (transform.position.y > _startPosition.y)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, _startPosition.y, transform.position.z), _moveSpeed * Time.deltaTime);
+                    yield return null;
+                }
+
+                yield return new WaitForSeconds(_waitTime);
             }
-
-            // 잠시 멈춤
-            yield return new WaitForSeconds(_waitTime);
-
-            // 위에서 아래로 이동
-            while (transform.position.y > initialY)
+            else
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, initialY, transform.position.z), _moveSpeed * Time.deltaTime);
-                yield return null;
-            }
+                // 원점 ↔ 아래쪽 이동
+                while (transform.position.y > bottomY)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, bottomY, transform.position.z), _moveSpeed * Time.deltaTime);
+                    yield return null;
+                }
 
-            // 잠시 멈춤
-            yield return new WaitForSeconds(_waitTime);
+                yield return new WaitForSeconds(_waitTime);
+
+                while (transform.position.y < _startPosition.y)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, _startPosition.y, transform.position.z), _moveSpeed * Time.deltaTime);
+                    yield return null;
+                }
+
+                yield return new WaitForSeconds(_waitTime);
+            }
         }
     }
 }

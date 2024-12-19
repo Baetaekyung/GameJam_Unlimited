@@ -1,8 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/07SOs/Sounds/BulletHit.asset.meta
 guid: 00c90b2d9dba0904181711aa1b02a296
+========
+guid: 2133d285a764b0e4983749ac4ddc06eb
+>>>>>>>> HU:Assets/04Materials/TK/HDR/DeadColliderMat.mat.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 11400000
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

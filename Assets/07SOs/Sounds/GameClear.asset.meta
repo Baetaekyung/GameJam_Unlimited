@@ -1,8 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/07SOs/Sounds/GameClear.asset.meta
 guid: 125df4e61dbf5d14cb75cff0ac39c96b
+========
+guid: ff2f9ddfa60b5b34392f8b576526c7c2
+>>>>>>>> HU:Assets/04Materials/TK/Canvas/JetpackGuageMat.mat.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 11400000
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

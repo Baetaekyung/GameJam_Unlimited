@@ -23,6 +23,7 @@ public class Bullet : MonoBehaviour, IPoolable
     {
         if (other.transform.TryGetComponent(out BallController ball))
         {
+            SoundManager.Instance.PlayerSFX(SfxType.BULLETHIT);
             ball.Dead();
         }
         _poolManagerSO.Despawn("Bullets", this.gameObject);

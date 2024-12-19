@@ -19,7 +19,7 @@ public class TitleCanvasManager : MonoBehaviour
     private float lastTurnTime = 0;
     private float turnningCooldown = 1f;
 
-    [SerializeField] private float titleSceneXPos, selectLevelSceneXPos, settingSceneXPos, shopSceneXPos;
+    [SerializeField] private float titleSceneXPos, selectLevelSceneXPos, settingSceneXPos, shopSceneXPos, tipSceneXPos;
     private float currenPosX;
 
     [SerializeField] private Transform _uiControllerTrm;
@@ -69,9 +69,9 @@ public class TitleCanvasManager : MonoBehaviour
     {
         currentScene += v;
 
-        if(currentScene > 4)
+        if(currentScene > 5)
         {
-            currentScene = 4;
+            currentScene = 5;
         }
 
         if (currentScene <= 1)
@@ -96,7 +96,13 @@ public class TitleCanvasManager : MonoBehaviour
                 SceneStatus.Instance.ChangeSceneState(SceneStateType.Store); //0
                 currenPosX = shopSceneXPos;
                 break;
+            case 5:
+                SceneStatus.Instance.ChangeSceneState(SceneStateType.Tip); //0
+                currenPosX = tipSceneXPos;
+                break;
         }
+
+        SoundManager.Instance.SetVolumes();
     }
     private void SlideView()
     {

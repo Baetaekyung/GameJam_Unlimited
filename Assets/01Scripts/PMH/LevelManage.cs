@@ -32,11 +32,10 @@ public class LevelManage : MonoBehaviour
         SetClearLevleSlot();
 
         EasyLevelOpen();
-    }
 
-    private void Update()
-    {
         CheckLevelsCleared();
+
+        easyLevels[0].SetLevelType(LevelSlotType.Opend);
     }
 
     private void GetChilds()
@@ -65,16 +64,22 @@ public class LevelManage : MonoBehaviour
             }
         }
         
-        for (int i = 1; i <= easyLevels.Count; i++)
+        for (int i = 0; i < easyLevels.Count; i++)
         {
             //Debug.Log($"{i + 0} ��° ���� ��");
-            if (GameManager.Instance.IsClearStage(i))
+            if (GameManager.Instance.IsClearStage(i + 1))
             {
-                easyLevels[i - 1].SetLevelType(LevelSlotType.Cleard);
+                easyLevels[i].SetLevelType(LevelSlotType.Cleard);
 
-                if (easyLevels[i] != null)
+                if(i < easyLevels.Count)
                 {
-                    easyLevels[i].SetLevelType(LevelSlotType.Opend);
+                    if(i == easyLevels.Count - 1)
+                    {
+                        break;
+                    }
+                    GameManager.currentSceneNumber = i + 2;
+                    Debug.Log(GameManager.currentSceneNumber + " : 번째 씬 저장밍");
+                    easyLevels[i + 1].SetLevelType(LevelSlotType.Opend);
                 }
             }
         }
@@ -90,12 +95,22 @@ public class LevelManage : MonoBehaviour
             }
         }
 
-        for (int i = 1; i <= normalLevels.Count; i++)
+        for (int i = 0; i < normalLevels.Count; i++)
         {
             if (GameManager.Instance.IsClearStage(i + 10))
             {
-                normalLevels[i - 1].SetLevelType(LevelSlotType.Cleard);
-                normalLevels[i].SetLevelType(LevelSlotType.Opend);
+                normalLevels[i].SetLevelType(LevelSlotType.Cleard);
+
+                if (i < normalLevels.Count)
+                {
+                    if (i == normalLevels.Count - 1)
+                    {
+                        break;
+                    }
+                    GameManager.currentSceneNumber = i + 12;
+                    Debug.Log(GameManager.currentSceneNumber + " : 번째 씬 저장밍");
+                    normalLevels[i + 1].SetLevelType(LevelSlotType.Opend);
+                }
             }
         }
 
@@ -109,13 +124,33 @@ public class LevelManage : MonoBehaviour
             }
         }
 
-        for (int i = 1; i <= hardLevels.Count; i++)
+        for (int i = 0; i < hardLevels.Count; i++)
         {
             if (GameManager.Instance.IsClearStage(i + 40))
             {
-                hardLevels[i - 1].SetLevelType(LevelSlotType.Cleard);
-                hardLevels[i].SetLevelType(LevelSlotType.Opend);
+                hardLevels[i].SetLevelType(LevelSlotType.Cleard);
+
+                if (i < hardLevels.Count)
+                {
+                    if (i == hardLevels.Count - 1)
+                    {
+                        break;
+                    }
+                    GameManager.currentSceneNumber = i + 42;
+                    Debug.Log(GameManager.currentSceneNumber + " : 번째 씬 저장밍");
+                    hardLevels[i + 1].SetLevelType(LevelSlotType.Opend);
+                }
             }
+        }
+
+        if (GameManager.currentSceneNumber == 10)
+        {
+            normalLevels[0].SetLevelType(LevelSlotType.Opend);
+        }
+
+        if (GameManager.currentSceneNumber == 30)
+        {
+            hardLevels[0].SetLevelType(LevelSlotType.Opend);
         }
     }
 

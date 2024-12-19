@@ -183,9 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c25502d753346a409ec47efe8fbdd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  moveSpeed: 15
+  detectionRange: 20
   minSpeed: 0.5
-  detectionRange: 10
   dashCooldown: 3
   waitBeforeDash: 2
 --- !u!60 &1315777972291947425

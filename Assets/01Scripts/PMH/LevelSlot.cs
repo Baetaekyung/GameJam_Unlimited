@@ -9,9 +9,14 @@ public enum LevelSlotType
 {
     Opend, Cleard, Closed
 }
+public enum LevelDifficulty
+{
+    Easy, Normal, Hard
+}
 public class LevelSlot : MonoBehaviour
 {
     [SerializeField] private LevelSlotType levelType;
+    [SerializeField] private LevelDifficulty levelDifficulty;
 
     [SerializeField] TMP_Text levelAmountTxt;
 
@@ -35,7 +40,7 @@ public class LevelSlot : MonoBehaviour
                 break;
             case LevelSlotType.Cleard:
                 {
-                    levelAmountTxt.color = Color.green;
+                    levelAmountTxt.color = Color.white;
                 }
                 break;
             case LevelSlotType.Closed:
@@ -59,14 +64,29 @@ public class LevelSlot : MonoBehaviour
         ////Transform map = transform.Find(str);
         ////map.gameObject.SetActive(true);
         Debug.Log("클릭밍");
-        int cnum = transform.GetSiblingIndex();
-        cnum = cnum + 1;
-        Debug.Log($"{levelDiff}_{cnum}");
+        int sceneNum = transform.GetSiblingIndex();
+        int loadScene = transform.GetSiblingIndex();
+
+        switch (levelDifficulty)
+        {
+            case LevelDifficulty.Easy:
+                sceneNum = loadScene + 1;
+                break;
+            case LevelDifficulty.Normal:
+                sceneNum = loadScene + 11;
+                break;
+            case LevelDifficulty.Hard:
+                sceneNum = loadScene + 41;
+                break;
+        }
+        
+
+        Debug.Assert(true, $"{levelDiff}_{loadScene + 1}");
 
         FadeSceneChanger.Instance.FadeIn(1f, () =>
         {
-            GameManager.Instance.SetCurrentSceneNumber(cnum);
-            SceneManager.LoadScene($"{levelDiff}_{cnum}");
+            GameManager.Instance.SetCurrentSceneNumber(sceneNum);
+            SceneManager.LoadScene($"{levelDiff}_{loadScene + 1}");
         });
         //입장밍
 

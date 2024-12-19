@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2004ead80fe49b4b98313907f81a7c8, type: 3}
+  m_Name: BulletHit
+  m_EditorClassIdentifier: 
+  sfxName: BulletHit
+  sfxType: 7
+  audioClip: {fileID: 8300000, guid: 7f8fabd37b75d56489fca458793f5cb8, type: 3}

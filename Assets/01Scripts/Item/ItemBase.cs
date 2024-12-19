@@ -14,6 +14,9 @@ public abstract class ItemBase : MonoBehaviour
         {
             _ball = ball;
             EffectItem(_ball);
+
+            SoundManager.Instance.PlayerSFX(SfxType.TAKEITEM);
+
             Destroy(this.gameObject);
         }
     }

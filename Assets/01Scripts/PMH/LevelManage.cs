@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelManage : MonoBehaviour
@@ -141,5 +142,10 @@ public class LevelManage : MonoBehaviour
         easyLevel.gameObject.SetActive(false);
         normalLevel.gameObject.SetActive(false);
         hardLevel.gameObject.SetActive(true);
+    }
+
+    public void GoChallengeButton()
+    {
+        SceneManager.LoadScene("ChallengeScene");
     }
 }

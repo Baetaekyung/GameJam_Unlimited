@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/05Scenes/MH/TItleScene_PMH.unity
     guid: 65a9d30082b71ac498ed203c3b78e15b
   - enabled: 1
+    path: Assets/05Scenes/TK/ChallengeScene.unity
+    guid: 7cc3857d8954fee4994f171f1be3a141
+  - enabled: 1
     path: Assets/05Scenes/MH/Maps/Easy_1.unity
     guid: eca23c0eff6f3d24b8d9c35e550828da
   - enabled: 1
@@ -39,6 +42,21 @@ EditorBuildSettings:
     path: Assets/05Scenes/MH/Maps/Easy_10.unity
     guid: 9baa623be9efd0e438664fe3e5cecd6e
   - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Hard_1.unity
+    guid: 40fb97549d920dc46bfeb31586335559
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Hard_2.unity
+    guid: 4abcd6926b4aad64db8889c2e4aa2406
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Hard_3.unity
+    guid: a8951319d58945e45b0adc7baa5816e6
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Hard_4.unity
+    guid: 6aeb53f8002e790498d70565a5e79afa
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Hard_5.unity
+    guid: c71f99761dfa179428e423044b5235a5
+  - enabled: 1
     path: Assets/05Scenes/MH/Maps/Normal_1.unity
     guid: fb448237b5c155c48bb4bc0e8c64fad9
   - enabled: 1
@@ -62,13 +80,70 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/05Scenes/MH/Maps/Normal_8.unity
     guid: 32c9f012e4fa8a7499a0f3e519320c2b
-  - enabled: 0
-    path: Assets/05Scenes/MH/Maps/Hard_LASER.unity
-    guid: 84f01fef214684b49a59ed5547bedcf0
   - enabled: 1
-    path: Assets/05Scenes/MH/Maps/Hard_2.unity
-    guid: 4abcd6926b4aad64db8889c2e4aa2406
+    path: Assets/05Scenes/MH/Maps/Normal_9.unity
+    guid: 005e2157a6d107846bf3bfd2ff18f4e0
   - enabled: 1
-    path: Assets/05Scenes/MH/Maps/Hard_3.unity
-    guid: a8951319d58945e45b0adc7baa5816e6
+    path: Assets/05Scenes/MH/Maps/Normal_10.unity
+    guid: 66a4758f80f42d64aa7261b001618b71
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_11.unity
+    guid: 73ae899109b37c24fa1886c5f5f99170
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_12.unity
+    guid: aa5c90dabccc145459d64415bef605de
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_13.unity
+    guid: 1034192799cd0ef4f8380d536417663d
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_14.unity
+    guid: 40c6c65af98dc1e4796ce530a24da33b
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_15.unity
+    guid: 1e9cba4a45332394e9a2439be6b430c9
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_16.unity
+    guid: 6918e120974319043a6f1d30ef324334
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_17.unity
+    guid: 3fc8fc673eb56cf4abbf518348801d15
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_18.unity
+    guid: f7a4a910c812adf4098024964dd709b0
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_19.unity
+    guid: c17fcbd04eb970b4c8373eab107d470e
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_20.unity
+    guid: 0ec3f437139abfc49bf3c4faddcbf759
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_21.unity
+    guid: 855a5f0940fae954bb94c19542261918
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_22.unity
+    guid: 2d9ec654a40e6a941a81fdfb8ed1e1b7
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_23.unity
+    guid: 81b44f5c8e2e3b34c8722ac9812769fe
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_24.unity
+    guid: 44e9f1a57e832114291f944b7a753648
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_25.unity
+    guid: 5e430a5a0146f4d4885a60ddf68b9714
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_26.unity
+    guid: 2a7a69031cd2a404b8c618240aea5d70
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_27.unity
+    guid: a58bba7742fd25848968931a64b95b80
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_28.unity
+    guid: eb325f50fb3a59c49935c2bc29427c7c
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_29.unity
+    guid: 9791bc33e70a05447bf6a09acccb790e
+  - enabled: 1
+    path: Assets/05Scenes/MH/Maps/Normal_30.unity
+    guid: 93378a89780a7d24ebafd6818fc80b1d
   m_configObjects: {}

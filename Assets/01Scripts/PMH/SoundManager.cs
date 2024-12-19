@@ -21,7 +21,6 @@ public enum SfxType
     GameClear
 }
 
-[MonoSingletonAttribute(SingletonFlag.DontDestroyOnLoad)]
 public class SoundManager : MonoSingleton<SoundManager>
 {
     [SerializeField] private Slider vfxController;

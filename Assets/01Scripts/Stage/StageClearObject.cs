@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageClearObject : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class StageClearObject : MonoBehaviour
             Debug.Log("StageClear");
 
             //스테이지 클리어 UI 나타나기
+            SceneManager.LoadScene(0);
 
             _isStageCleared = true;
         }

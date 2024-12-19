@@ -123,7 +123,7 @@ public class SoundManager : MonoSingleton<SoundManager>
                 }
 
             }
-            Debug.Log(_sfxPlayers[loopIndex]);
+            //Debug.Log(_sfxPlayers[loopIndex]);
             _sfxPlayers[loopIndex].Play();
             break;
         }

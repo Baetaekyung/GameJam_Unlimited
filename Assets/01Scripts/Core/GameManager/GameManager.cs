@@ -27,7 +27,7 @@ public class GameManager : MonoSingleton<GameManager>
         {
             clearData = new ClearData
             {
-                clearDatas = new bool[41]
+                clearDatas = new bool[410]
             };
 
             clearData.clearDatas[1] = true;
@@ -43,6 +43,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public bool IsClearStage(int stageNum)
     {
+        Debug.Log(clearData.clearDatas.Length + " 길이를 가지고 잇습니다");
         return clearData.clearDatas[stageNum];
     }
 

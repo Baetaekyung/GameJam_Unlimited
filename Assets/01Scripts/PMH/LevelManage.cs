@@ -7,8 +7,14 @@ public class LevelManage : MonoBehaviour
 {
     public static LevelManage Instance;
 
-    [SerializeField] private Transform levelParent;
-    [SerializeField] private List<LevelSlot> levels = new List<LevelSlot>();
+    [SerializeField] private Transform easyLevelParent;
+    [SerializeField] private List<LevelSlot> easyLevels = new List<LevelSlot>();
+
+    [SerializeField] private Transform normalLevelParent;
+    [SerializeField] private List<LevelSlot> normalLevels = new List<LevelSlot>();
+
+    [SerializeField] private Transform hardLevelParent;
+    [SerializeField] private List<LevelSlot> hardLevels = new List<LevelSlot>();
 
     private int currentLevel = 0;
 
@@ -17,35 +23,97 @@ public class LevelManage : MonoBehaviour
     [SerializeField] private Transform normalLevel;
     [SerializeField] private Transform hardLevel;
 
-    private void OnEnable()
-    {
-        for (int i = 0; i < levelParent.childCount; i++)
-        {
-            levels.Add(levelParent.GetChild(i).GetComponent<LevelSlot>());
-        }
+    private readonly int easyLeveloffset = 1;
+    private readonly int normalLeveloffset = 100;
+    private readonly int hardLeveloffset = 400;
 
-        SetLockedLevelSlot();
+    private void Awake()
+    {
+        GetChilds();
+
+        CheckLevelsClreard();
         SetClearLevleSlot();
 
         EasyLevelOpen();
     }
 
-    public void SetLockedLevelSlot()
+    private void GetChilds()
     {
-        for (int i = 0; i < levels.Count; i++)
+        for (int i = 0; i < easyLevelParent.childCount; i++)
         {
-            levels[i].SetLevelType(LevelSlotType.Closed);
+            easyLevels.Add(normalLevelParent.GetChild(i).GetComponent<LevelSlot>());
+        }
+        for (int i = 0; i < normalLevelParent.childCount; i++)
+        {
+            normalLevels.Add(normalLevelParent.GetChild(i).GetComponent<LevelSlot>());
+        }
+        for (int i = 0; i < hardLevelParent.childCount; i++)
+        {
+            hardLevels.Add(normalLevelParent.GetChild(i).GetComponent<LevelSlot>());
+        }
+    }
+    public void CheckLevelsClreard()
+    {
+        for (int i = 0; i < easyLevels.Count; i++)
+        {
+            Debug.Log($"{i + easyLeveloffset} 번째 이지 맵");
+            if (GameManager.Instance.IsClearStage(i + easyLeveloffset))
+            {
+                easyLevels[i].SetLevelType(LevelSlotType.Cleard);
+                if (easyLevels[i + 1] != null)
+                {
+                    easyLevels[i + 1].SetLevelType(LevelSlotType.Opend); //클리어한 다음 스테이지 열어주기
+                }
+            }
+            else
+            {
+                easyLevels[i].SetLevelType(LevelSlotType.Closed);
+            }
+        }
+        //----------------------------------------------------------------
+        for (int i = 0; i < normalLevels.Count; i++)
+        {
+            Debug.Log($"{i + normalLeveloffset} 번째 노말 맵");
+            if (GameManager.Instance.IsClearStage(i + normalLeveloffset))
+            {
+                normalLevels[i].SetLevelType(LevelSlotType.Cleard);
+                if (normalLevels[i + 1] != null)
+                {
+                    normalLevels[i + 1].SetLevelType(LevelSlotType.Opend); //클리어한 다음 스테이지 열어주기
+                }
+            }
+            else
+            {
+                normalLevels[i].SetLevelType(LevelSlotType.Closed);
+            }
+        }
+        //----------------------------------------------------------------
+        for (int i = 0; i < hardLevels.Count; i++)
+        {
+            Debug.Log($"{i + hardLeveloffset} 번째 하드 맵");
+            if (GameManager.Instance.IsClearStage(i + hardLeveloffset))
+            {
+                hardLevels[i].SetLevelType(LevelSlotType.Cleard);
+                if (hardLevels[i + 1] != null)
+                {
+                    hardLevels[i + 1].SetLevelType(LevelSlotType.Opend); //클리어한 다음 스테이지 열어주기
+                }
+            }
+            else
+            {
+                hardLevels[i].SetLevelType(LevelSlotType.Closed);
+            }
         }
     }
 
     public void SetClearLevleSlot()
     {
-        for(int i = 0; i < currentLevel; i++)
-        {
-            levels[i].SetLevelType(LevelSlotType.Cleard);
-        }
-
-        levels[currentLevel].SetLevelType(LevelSlotType.Opend);
+        //for (int i = 0; i < currentLevel; i++)
+        //{
+        //    levels[i].SetLevelType(LevelSlotType.Cleard);
+        //}
+        //
+        //levels[currentLevel].SetLevelType(LevelSlotType.Opend);
     }
 
     //레벨 선택 버튼 해서 셋액티브하기

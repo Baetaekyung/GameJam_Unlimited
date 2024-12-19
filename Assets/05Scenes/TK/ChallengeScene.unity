@@ -2468,6 +2468,7 @@ MonoBehaviour:
   _detectEffect: {fileID: 1994774118526933249, guid: 18015ed8d021d1840b06ba808408c249, type: 3}
   _invisibleTime: 3
   _jetpackSpeed: 1500
+  IsDead: 0
 --- !u!224 &3834513240889612842
 RectTransform:
   m_ObjectHideFlags: 0

@@ -10,8 +10,6 @@ public class CollisionCameraShake : MonoBehaviour
     private float _shakeTimer;
 
     [SerializeField] private float _shakeDuration = 0.5f; // 흔들림 지속 시간
-    [SerializeField] private float _shakeAmplitude = 2f;  // 흔들림 강도
-    [SerializeField] private float _shakeFrequency = 2f;  // 흔들림 속도
 
     private void Awake()
     {

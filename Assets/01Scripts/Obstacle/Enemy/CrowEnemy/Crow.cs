@@ -123,11 +123,9 @@ public class Crow : Enemy
         }
     }
 
-    private void RotateTowardsPlayer()
+    protected override void RotateTowardsPlayer()
     {
-        // 업벡터를 플레이어 방향으로 맞추기
-        Vector3 upDirection = (_player.transform.position - transform.position).normalized;
-        transform.up = upDirection; // 업벡터를 플레이어 방향으로 설정
+        base.RotateTowardsPlayer();
     }
 
     private void Cooldown()

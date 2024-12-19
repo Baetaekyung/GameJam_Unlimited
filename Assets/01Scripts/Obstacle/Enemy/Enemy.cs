@@ -20,6 +20,11 @@ public abstract class Enemy : MonoBehaviour
     {
         // 플레이어와의 거리 계산
         _distanceToPlayer = Vector3.Distance(transform.position, _player.transform.position);
+
+        if(!IsPlayerInRange())
+        {
+
+        }
     }
     protected virtual bool IsPlayerInRange()
     {
@@ -27,6 +32,12 @@ public abstract class Enemy : MonoBehaviour
             return true;
 
         return false;
+    }
+    protected virtual void RotateTowardsPlayer()
+    {
+        // 업벡터를 플레이어 방향으로 맞추기
+        Vector3 upDirection = (_player.transform.position - transform.position).normalized;
+        transform.up = upDirection; // 업벡터를 플레이어 방향으로 설정
     }
 
     private void OnDrawGizmos()

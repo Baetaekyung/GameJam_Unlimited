@@ -25,10 +25,6 @@ public class SoundManager : MonoSingleton<SoundManager>
     public AudioMixerGroup SFXGroup;
     //�ϴ���
 
-    private readonly string sound_master = "Master";
-    private readonly string sound_bgm = "BGM";
-    private readonly string sound_sfx = "SFX";
-
     [Header("BGM")]
     public AudioClip bgmClip;
     public float bgmVolume;
@@ -47,8 +43,8 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         base.Awake();
         Init();
-        bgmController.value = 0.5f;
-        vfxController.value = 0.5f;
+        bgmController.value = bgmVolume;
+        vfxController.value = sfxVolum;
         bgmVolume = bgmController.value;
         sfxVolum = vfxController.value;
         SetVolume(0);

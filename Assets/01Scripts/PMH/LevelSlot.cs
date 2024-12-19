@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum LevelSlotType
@@ -74,6 +75,10 @@ public class LevelSlot : MonoBehaviour
         Debug.Log("클릭밍");
         Debug.Log($"{levelData.levelDifficulty}_{transform.GetSiblingIndex()}");
 
+        FadeSceneChanger.Instance.FadeIn(1f, () =>
+        {
+            SceneManager.LoadScene($"{levelData.levelDifficulty}_{transform.GetSiblingIndex()}");
+        });
         //입장밍
 
         //GameCanvaManager.Instance.FadeInFadeOut(true);

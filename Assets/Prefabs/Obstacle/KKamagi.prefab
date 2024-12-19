@@ -139,7 +139,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22486bed413cdfa45a82ef044fe293b7, type: 2}
+  - {fileID: 2100000, guid: 9322608de724c2940bb994157d5a3b0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -184,7 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  detectionRange: 20
+  detectionRange: 10
+  dissolveMaterial: {fileID: 2100000, guid: 9322608de724c2940bb994157d5a3b0c, type: 2}
   minSpeed: 5
   waitBeforeDash: 2
 --- !u!60 &1315777972291947425

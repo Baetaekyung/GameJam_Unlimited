@@ -36,5 +36,7 @@ public class SpinBullet : MonoBehaviour
         {
             player.Dead();
         }
+
+        Destroy(gameObject);
     }
 }

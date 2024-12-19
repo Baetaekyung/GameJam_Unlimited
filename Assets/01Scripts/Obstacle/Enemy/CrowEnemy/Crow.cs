@@ -3,14 +3,10 @@ using UnityEngine;
 public class Crow : Enemy
 {
     [SerializeField] private float minSpeed = 1f; // 목표 속도 (감속 후 최종 속도)
-    [SerializeField] private float dashCooldown = 3f; // 돌진 후 휴식 시간
     [SerializeField] private float waitBeforeDash = 2f; // 대쉬 전 대기 시간
-    [SerializeField] private float destroyAfterTime = 10f; // 설정된 시간이 지나면 삭제
 
     private Vector2 _dashPos; // 이동하고자 하는 지점
     private bool _isDashing = false; // 대쉬 중인가?
-    private float _cooldownTimer = 0f;
-    private bool _isOnCooldown = false; // 쿨다운 중인가?
     private bool _isPreparingToDash = false;
     private float _preparationTimer = 0f;
 
@@ -22,8 +18,6 @@ public class Crow : Enemy
 
     private Transform _child;
 
-    private float _destroyTimer = 0f; // 오브젝트 삭제 타이머
-
     private void Awake()
     {
         _child = transform.GetChild(0).transform;
@@ -34,16 +28,7 @@ public class Crow : Enemy
     {
         base.Update();
 
-        if (_destroyTimer >= destroyAfterTime)
-        {
-            Destroy(gameObject); // 설정된 시간 후에 삭제
-            return;
-        }
-
-        _destroyTimer += Time.deltaTime;
-
         if (_isDashing) Dash();
-        else if (_isOnCooldown) Cooldown();
         else if (_isPreparingToDash) PrepareToDash();
         else IdleAndDetectPlayer();
     }
@@ -60,10 +45,7 @@ public class Crow : Enemy
 
     private void PrepareToDash()
     {
-        if (_isDashing)
-        {
-            return; // 대쉬가 이미 시작되었으면 대기하지 않음
-        }
+        if (_isDashing) return; // 대쉬가 이미 시작되었으면 대기하지 않음
 
         if (!IsPlayerInRange())
         {
@@ -84,9 +66,6 @@ public class Crow : Enemy
 
         // 페이드 효과 적용
         ApplyFadeInEffect();
-
-        _child.position = _player.transform.position;
-        _child.localScale = new Vector3(_child.localScale.x, _distanceToPlayer * 2, _child.localScale.z);
 
         // 돌진 목표 지점 계산
         Vector2 direction = (_player.transform.position - transform.position).normalized;
@@ -126,32 +105,9 @@ public class Crow : Enemy
         if (distanceToTarget < 0.1f)
         {
             _isDashing = false;
-            _isOnCooldown = true;
-            _cooldownTimer = dashCooldown;
-            DisableSprite();
 
-            // 속도 초기화
-            moveSpeed = 15f;
-        }
-    }
-
-    protected override void RotateTowardsPlayer()
-    {
-        base.RotateTowardsPlayer();
-    }
-
-    private void Cooldown()
-    {
-        DisableSprite();
-        if (_cooldownTimer > 0)
-        {
-            // 휴식 중
-            _cooldownTimer -= Time.deltaTime;
-        }
-        else
-        {
-            // 휴식 종료
-            _isOnCooldown = false;
+            // 오브젝트 삭제
+            Destroy(gameObject);
         }
     }
 

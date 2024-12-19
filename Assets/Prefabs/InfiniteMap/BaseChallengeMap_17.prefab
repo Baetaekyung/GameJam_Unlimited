@@ -458,6 +458,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpinEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5927072518037441705, guid: 114b3c65e473dae4cab16024b4203ac4, type: 3}
+      propertyPath: detectionRange
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

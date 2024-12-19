@@ -16,6 +16,11 @@ public class StageClearObject : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             Debug.Log("StageClear");
+
+            int n =GameManager.currentSceneNumber;
+
+            GameManager.Instance.SetStageClear(n);
+
             _isStageCleared = true;
 
             FadeSceneChanger.Instance.FadeIn(1f, () =>

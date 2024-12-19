@@ -192,6 +192,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3686360068177857767, guid: c54affefd3ab6e7498c70350396d2d72, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9541515
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686360068177857767, guid: c54affefd3ab6e7498c70350396d2d72, type: 3}
+      propertyPath: m_Color.r
+      value: 0.53234494
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686360068177857767, guid: c54affefd3ab6e7498c70350396d2d72, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 98273d96206bc7b4890e7ec8e9af18ac, type: 2}
     - target: {fileID: 5920496384675709296, guid: c54affefd3ab6e7498c70350396d2d72, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -280,6 +292,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingScene
       objectReference: {fileID: 0}
+    - target: {fileID: 7321613120579596638, guid: c54affefd3ab6e7498c70350396d2d72, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903881548714474438, guid: c54affefd3ab6e7498c70350396d2d72, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903881548714474438, guid: c54affefd3ab6e7498c70350396d2d72, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903881548714474438, guid: c54affefd3ab6e7498c70350396d2d72, type: 3}
+      propertyPath: m_Color.r
+      value: 0.53333336
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903881548714474438, guid: c54affefd3ab6e7498c70350396d2d72, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 98273d96206bc7b4890e7ec8e9af18ac, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

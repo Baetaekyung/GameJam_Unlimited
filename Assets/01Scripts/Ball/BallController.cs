@@ -12,11 +12,13 @@ public class BallController : MonoBehaviour
     private BallInputController _inputController;
     private LineRenderer _lineRenderer;
     [SerializeField] private int _lineResolution = 20;
+    [SerializeField] private ObjectPoolManagerSO _poolManagerSO;
     
     [field: SerializeField] public bool IsInvisible { get; set; } = false;
 
     [SerializeField] private Material _dissolveMaterial;
     [SerializeField] private GameObject _deadEffect;
+    [SerializeField] private GameObject _detectEffect;
     
     [SerializeField] private float _invisibleTime;
     private float _currentInvisibleTime = 0f;
@@ -139,6 +141,7 @@ public class BallController : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             SoundManager.Instance.PlayerSFX(SfxType.BALLDETECT);
+            _poolManagerSO.Spawn("DetectEffect", transform.position, Quaternion.identity);
             
             if (shootCount > 0) return;
 

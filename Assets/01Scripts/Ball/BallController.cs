@@ -11,6 +11,8 @@ public class BallController : MonoBehaviour
     
     private BallInputController _inputController;
     private LineRenderer _lineRenderer;
+    [SerializeField] private int _lineResolution = 20;
+    
     [field: SerializeField] public bool IsInvisible { get; set; } = false;
 
     [SerializeField] private Material _dissolveMaterial;
@@ -62,6 +64,7 @@ public class BallController : MonoBehaviour
 
     private void HandleJetpackEvent(Vector2 direction)
     {
+        _lineRenderer.positionCount = 2;
         _lineRenderer.SetPosition(0,  direction);
         _lineRenderer.SetPosition(1, transform.position);
         AddForce(direction.normalized, _jetpackSpeed * Time.deltaTime);
@@ -69,16 +72,49 @@ public class BallController : MonoBehaviour
 
     private void HandleDragEvent(Vector2 direction, float force)
     {
-        _lineRenderer.SetPosition(0,  direction);
-        _lineRenderer.SetPosition(1, transform.position);
+        Vector3 initialVelocity = (direction.normalized * force) / RbCompo.mass;
+        Debug.Log(force);
+        
+        _lineRenderer.positionCount = _lineResolution;
+        Vector3[] points = new Vector3[_lineResolution];
+        
+        float timeStep = GetTrajectoryDuration(initialVelocity) / _lineResolution;
+
+        for (int i = 0; i < _lineResolution; i++)
+        {
+            float t = i * timeStep;
+            points[i] = CalculatePositionAtTimeWithDrag(initialVelocity, t, RbCompo.drag);
+        }
+        
+        _lineRenderer.SetPositions(points);
+    }
+
+    private Vector3 CalculatePositionAtTimeWithDrag(Vector3 initialVelocity, float time, float drag)
+    {
+        Vector3 startPosition = transform.position;
+        float gravity = Mathf.Abs(Physics.gravity.y) * (RbCompo.gravityScale * drag); //왜 drag를 곱해야 작동하는 지는 모르겠음, 하지만 작동함
+
+        float x = (initialVelocity.x / drag) * (1 - Mathf.Exp(-drag * time));
+        float y = (initialVelocity.y / drag) * (1 - Mathf.Exp(-drag * time)) -
+                  (gravity / (drag * drag)) * (time - (1 - Mathf.Exp(-drag * time)) / drag);
+        float z = (initialVelocity.z / drag) * (1 - Mathf.Exp(-drag * time));
+        
+        return startPosition + new Vector3(x, y, z);
+    }
+
+    private float GetTrajectoryDuration(Vector3 initialVelocity)
+    {
+        float vy = initialVelocity.y;
+        float gravity = Mathf.Abs(Physics.gravity.y) * (RbCompo.gravityScale * RbCompo.drag); //왜 drag를 곱해야 작동하는 지는 모르겠음, 하지만 작동함
+
+        return (2 * vy) / gravity;
     }
 
     private void HandleShootEvent(Vector2 direction, float force)
     {
         if (CanShoot() is false) return;
-        
-        _lineRenderer.SetPosition(0, Vector3.zero);
-        _lineRenderer.SetPosition(1,  Vector3.zero);
+
+        _lineRenderer.positionCount = 0;
 
         SoundManager.Instance.PlayerSFX(SfxType.BALLJUMP);
         RbCompo.velocity = Vector2.zero;

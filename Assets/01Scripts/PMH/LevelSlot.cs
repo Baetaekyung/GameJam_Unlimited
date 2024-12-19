@@ -15,24 +15,13 @@ public class LevelSlot : MonoBehaviour
 
     [SerializeField] TMP_Text levelAmountTxt;
 
-    [SerializeField] private LevelSlotDataSO levelData;
-
-    [SerializeField]
-    private Sprite
-        opendImage,
-        cleardImage,
-        closedImage;
-
-    private Image ig;
+    [SerializeField] private string levelDiff;
 
     private void OnEnable()
     {
-        ig = GetComponent<Image>();
-
         int cc = transform.GetSiblingIndex();
         levelAmountTxt.text = (cc + 1).ToString();
         SetImageAndText();
-
     }
 
     public void SetImageAndText()
@@ -41,20 +30,17 @@ public class LevelSlot : MonoBehaviour
         {
             case LevelSlotType.Opend:
                 {
-                    ig.sprite = opendImage;
-                    levelAmountTxt.color = Color.black;
+                    levelAmountTxt.color = Color.white;
                 }
                 break;
             case LevelSlotType.Cleard:
                 {
-                    ig.sprite = cleardImage;
-                    levelAmountTxt.color = Color.black;
+                    levelAmountTxt.color = Color.green;
                 }
                 break;
             case LevelSlotType.Closed:
                 {
-                    ig.sprite = closedImage;
-                    levelAmountTxt.color = Color.white;
+                    levelAmountTxt.color = Color.red;
                 }
                 break;
         }
@@ -73,11 +59,14 @@ public class LevelSlot : MonoBehaviour
         ////Transform map = transform.Find(str);
         ////map.gameObject.SetActive(true);
         Debug.Log("클릭밍");
-        Debug.Log($"{levelData.levelDifficulty}_{transform.GetSiblingIndex()}");
+        int cnum = transform.GetSiblingIndex();
+        cnum = cnum + 1;
+        Debug.Log($"{levelDiff}_{cnum}");
 
         FadeSceneChanger.Instance.FadeIn(1f, () =>
         {
-            SceneManager.LoadScene($"{levelData.levelDifficulty}_{transform.GetSiblingIndex()}");
+            GameManager.Instance.SetCurrentSceneNumber(cnum);
+            SceneManager.LoadScene($"{levelDiff}_{cnum}");
         });
         //입장밍
 

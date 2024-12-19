@@ -133,3 +133,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae07306ac8f71945a0aae9cf9e7f7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _jetpackDuration: 4

@@ -13,6 +13,8 @@ public class ClearData
 public class GameManager : MonoSingleton<GameManager>
 {
     private static ClearData clearData;
+
+    public static int currentSceneNumber { get; set; }
     
     protected override void Awake()
     {
@@ -39,6 +41,12 @@ public class GameManager : MonoSingleton<GameManager>
             
             SaveManager.Save(clearData, "clearData.json");
         }
+    }
+
+    public void SetCurrentSceneNumber(int num)
+    {
+        Debug.Log(num + " 번째 씬 저장");
+        currentSceneNumber = num;
     }
 
     public bool IsClearStage(int stageNum)

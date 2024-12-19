@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallController : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class BallController : MonoBehaviour
     private float _currentInvisibleTime = 0f;
 
     [SerializeField] private float _jetpackSpeed;
-    [SerializeField] private int shootCount = 1;
+    public static int shootCount = 0;
     public void SetShootCount(int count) => shootCount = count;
     private bool CanShoot() => shootCount > 0;
 
@@ -37,10 +38,12 @@ public class BallController : MonoBehaviour
 
     private void Start()
     {
+        SetShootCount(1);
         _dissolveMaterial.SetFloat(_dissolveHeight, 1f);
         
         _inputController.OnShootEvent += HandleShootEvent;
         _inputController.OnDragEvent += HandleDragEvent;
+        _inputController.OnDragEndEvent += HandleDragEndEvent;
         _inputController.OnJetpackEvent += HandleJetpackEvent;
 
         _lineRenderer.positionCount = 2;
@@ -48,6 +51,11 @@ public class BallController : MonoBehaviour
         _lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
         _lineRenderer.startWidth = 0.2f;
         _lineRenderer.endWidth = 0.2f;
+    }
+
+    private void HandleDragEndEvent()
+    {
+        SetShootCount(shootCount - 1);
     }
 
     private void Update()
@@ -94,7 +102,7 @@ public class BallController : MonoBehaviour
     private Vector3 CalculatePositionAtTimeWithDrag(Vector3 initialVelocity, float time, float drag)
     {
         Vector3 startPosition = transform.position;
-        float gravity = Mathf.Abs(Physics.gravity.y) * (RbCompo.gravityScale * drag); //??dragë¥?ê³±í•´???‘ë™?˜ëŠ” ì§€??ëª¨ë¥´ê² ìŒ, ?˜ì?ë§??‘ë™??
+        float gravity = Mathf.Abs(Physics.gravity.y) * (RbCompo.gravityScale * drag); //??dragï¿½?ê³±í•´???ï¿½ë™?ï¿½ëŠ” ì§€??ëª¨ë¥´ê² ìŒ, ?ï¿½ï¿½?ï¿½??ï¿½ë™??
 
         float x = (initialVelocity.x / drag) * (1 - Mathf.Exp(-drag * time));
         float y = (initialVelocity.y / drag) * (1 - Mathf.Exp(-drag * time)) -
@@ -107,7 +115,7 @@ public class BallController : MonoBehaviour
     private float GetTrajectoryDuration(Vector3 initialVelocity)
     {
         float vy = initialVelocity.y;
-        float gravity = Mathf.Abs(Physics.gravity.y) * (RbCompo.gravityScale * RbCompo.drag); //??dragë¥?ê³±í•´???‘ë™?˜ëŠ” ì§€??ëª¨ë¥´ê² ìŒ, ?˜ì?ë§??‘ë™??
+        float gravity = Mathf.Abs(Physics.gravity.y) * (RbCompo.gravityScale * RbCompo.drag); //??dragï¿½?ê³±í•´???ï¿½ë™?ï¿½ëŠ” ì§€??ëª¨ë¥´ê² ìŒ, ?ï¿½ï¿½?ï¿½??ï¿½ë™??
 
         return (2 * vy) / gravity;
     }
@@ -121,12 +129,11 @@ public class BallController : MonoBehaviour
         SoundManager.Instance.PlayerSFX(SfxType.BALLJUMP);
         RbCompo.velocity = Vector2.zero;
         RbCompo.AddForce(direction.normalized * force, ForceMode2D.Impulse);
-        SetShootCount(shootCount - 1);
     }
     
     public void AddForce(Vector2 direction, float force, ForceMode2D mode = ForceMode2D.Force)
     {
-        RbCompo.AddForce(direction * force, mode);
+        RbCompo.AddForce(direction * force, mode);  
     }
 
     private void OnDestroy()
@@ -161,7 +168,7 @@ public class BallController : MonoBehaviour
     {
         if (IsInvisible is true) return;
 
-        Debug.Log("Á×À½½ºÅ×ÀÌÆ®");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®");
         //transform.position = transform.parent.Find("SpawnPoint").transform.position;
 
         StartCoroutine(nameof(DeadRoutine));
@@ -185,6 +192,14 @@ public class BallController : MonoBehaviour
             {
                 Instantiate(_deadEffect, transform.position, Quaternion.identity);
                 instantEffect = true;
+
+                //ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½)
+                FadeSceneChanger.Instance.FadeIn(1f, () =>
+                {
+                    //ï¿½Î¿ï¿½ï¿½
+                    Scene cs = SceneManager.GetActiveScene();
+                    SceneManager.LoadScene(cs.name);
+                });
             }
             
             yield return null;

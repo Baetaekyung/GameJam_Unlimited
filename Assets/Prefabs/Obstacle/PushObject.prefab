@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 7267261434075799121}
   m_Layer: 0
   m_Name: PushObject
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0a48f67c08d18458679bf9c3943781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pushForce: 0
 --- !u!61 &7267261434075799121
 BoxCollider2D:
   m_ObjectHideFlags: 0

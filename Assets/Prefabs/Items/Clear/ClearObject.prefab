@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b072bfc8f2d2ee84f9c3376ed35fe39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nextStageName: TItleScene_PMH
 --- !u!61 &2819622003166664802
 BoxCollider2D:
   m_ObjectHideFlags: 0

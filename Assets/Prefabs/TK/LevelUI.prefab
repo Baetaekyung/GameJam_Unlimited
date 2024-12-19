@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelType: 0
   levelAmountTxt: {fileID: 4988452254400982838}
-  levelData: {fileID: 11400000, guid: 240212b9d8ba5054cacef903335b1fdc, type: 2}
+  levelData: {fileID: 11400000, guid: 9d0c66729f914aa4cbbc02bff48657b5, type: 2}
   opendImage: {fileID: 21300000, guid: 0009539e10a1c3f46aa94cf49c5bebcf, type: 3}
   cleardImage: {fileID: 21300000, guid: 4b82c506838ce9641910a5e51f1efb90, type: 3}
   closedImage: {fileID: 21300000, guid: 53d12212ff4772446821118aaa429a8f, type: 3}

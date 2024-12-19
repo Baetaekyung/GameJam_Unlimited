@@ -16,8 +16,6 @@ public class LevelManage : MonoBehaviour
     [SerializeField] private Transform hardLevelParent;
     [SerializeField] private List<LevelSlot> hardLevels = new List<LevelSlot>();
 
-    private int currentLevel = 0;
-
     [Header("LevelsButtons")]
     [SerializeField] private Transform easyLevel;
     [SerializeField] private Transform normalLevel;

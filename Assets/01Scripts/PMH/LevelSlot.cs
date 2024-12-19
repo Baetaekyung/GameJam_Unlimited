@@ -74,8 +74,11 @@ public class LevelSlot : MonoBehaviour
         ////map.gameObject.SetActive(true);
         Debug.Log("클릭밍");
         Debug.Log($"{levelData.levelDifficulty}_{transform.GetSiblingIndex()}");
-        SceneManager.LoadScene($"{levelData.levelDifficulty}_{transform.GetSiblingIndex()}");
 
+        FadeSceneChanger.Instance.FadeIn(1f, () =>
+        {
+            SceneManager.LoadScene($"{levelData.levelDifficulty}_{transform.GetSiblingIndex()}");
+        });
         //입장밍
 
         //GameCanvaManager.Instance.FadeInFadeOut(true);

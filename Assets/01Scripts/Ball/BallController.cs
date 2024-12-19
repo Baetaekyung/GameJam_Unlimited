@@ -75,7 +75,7 @@ public class BallController : MonoBehaviour
     private void HandleDragEvent(Vector2 direction, float force)
     {
         Vector3 initialVelocity = (direction.normalized * force) / RbCompo.mass;
-        Debug.Log(force);
+        //Debug.Log(force);
         
         _lineRenderer.positionCount = _lineResolution;
         Vector3[] points = new Vector3[_lineResolution];
@@ -94,7 +94,7 @@ public class BallController : MonoBehaviour
     private Vector3 CalculatePositionAtTimeWithDrag(Vector3 initialVelocity, float time, float drag)
     {
         Vector3 startPosition = transform.position;
-        float gravity = Mathf.Abs(Physics.gravity.y) * (RbCompo.gravityScale * drag); //왜 drag를 곱해야 작동하는 지는 모르겠음, 하지만 작동함
+        float gravity = Mathf.Abs(Physics.gravity.y) * (RbCompo.gravityScale * drag); //??drag�?곱해???�동?�는 지??모르겠음, ?��?�??�동??
 
         float x = (initialVelocity.x / drag) * (1 - Mathf.Exp(-drag * time));
         float y = (initialVelocity.y / drag) * (1 - Mathf.Exp(-drag * time)) -
@@ -107,7 +107,7 @@ public class BallController : MonoBehaviour
     private float GetTrajectoryDuration(Vector3 initialVelocity)
     {
         float vy = initialVelocity.y;
-        float gravity = Mathf.Abs(Physics.gravity.y) * (RbCompo.gravityScale * RbCompo.drag); //왜 drag를 곱해야 작동하는 지는 모르겠음, 하지만 작동함
+        float gravity = Mathf.Abs(Physics.gravity.y) * (RbCompo.gravityScale * RbCompo.drag); //??drag�?곱해???�동?�는 지??모르겠음, ?��?�??�동??
 
         return (2 * vy) / gravity;
     }

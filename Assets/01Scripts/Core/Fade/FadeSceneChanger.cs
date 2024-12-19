@@ -31,11 +31,11 @@ public class FadeSceneChanger : MonoSingleton<FadeSceneChanger>
         
         while (progress < duration)
         {
-            progress += _fadeSpeed * Time.deltaTime;
+            progress += _fadeSpeed * Time.unscaledDeltaTime;
             
             _fadeImage.color = new Color(_fadeImage.color.r, _fadeImage.color.g, _fadeImage.color.b, progress);
-            
-            yield return new WaitForEndOfFrame();
+
+            yield return new WaitForSecondsRealtime(Time.unscaledDeltaTime);
         }
         
         callback?.Invoke();
@@ -47,11 +47,11 @@ public class FadeSceneChanger : MonoSingleton<FadeSceneChanger>
         
         while (progress > 0)
         {
-            progress -= _fadeSpeed * Time.deltaTime;
+            progress -= _fadeSpeed * Time.unscaledDeltaTime;
             
             _fadeImage.color = new Color(_fadeImage.color.r, _fadeImage.color.g, _fadeImage.color.b, progress);
             
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSecondsRealtime(Time.unscaledDeltaTime);
         }
         
         callback?.Invoke();

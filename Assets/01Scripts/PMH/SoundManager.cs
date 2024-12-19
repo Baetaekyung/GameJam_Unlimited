@@ -8,9 +8,20 @@ using UnityEngine.UI;
 
 public enum SfxType
 {
-    BGM = 0, EFFECT = 1, BALLDETECT, BALLJUMP
+    BGM = 0,
+    EFFECT,
+    BALLDETECT,
+    BALLJUMP,
+    TAKEITEM,
+    LASERACTIVE,
+    TURRETACTIVE,
+    BULLETHIT,
+    LASERHIT,
+    JUMPPAD,
+    GameClear
 }
 
+[MonoSingletonAttribute(SingletonFlag.DontDestroyOnLoad)]
 public class SoundManager : MonoSingleton<SoundManager>
 {
     [SerializeField] private Slider vfxController;
@@ -27,14 +38,21 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     [Header("BGM")]
     public AudioClip bgmClip;
-    public float bgmVolume;
 
     private AudioSource bgmPlayer;
 
     [Header("SFX")]
     public SfxSO[] sfxClipSO;
-    public float sfxVolum;
+    
     public int channels;
+
+    public struct VolumeValues
+    {
+        public float sfxVolum;
+        public float bgmVolume;
+    }
+
+    private VolumeValues vV;
 
     private AudioSource[] _sfxPlayers;
     private int _channelIndex;
@@ -43,10 +61,23 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         base.Awake();
         Init();
-        bgmController.value = bgmVolume;
-        vfxController.value = sfxVolum;
-        bgmVolume = bgmController.value;
-        sfxVolum = vfxController.value;
+
+        if (SaveManager.Exist("Sounds.json"))
+        {
+            vV = SaveManager.Load<VolumeValues>("Sounds.json");
+        }
+        else
+        {
+            vV = new VolumeValues();
+            vV.bgmVolume = 0.1f;
+            vV.sfxVolum = 0.1f;
+            SaveManager.Save(vV, "Sounds.json");
+        }
+
+        bgmController.value = vV.bgmVolume;
+        vfxController.value = vV.sfxVolum;
+        vV.bgmVolume = bgmController.value;
+        vV.sfxVolum = vfxController.value;
         SetVolume(0);
 
         bgmController.onValueChanged?.AddListener(SetVolume);
@@ -54,17 +85,22 @@ public class SoundManager : MonoSingleton<SoundManager>
     }
     private void SetVolume(float volume)
     {
-        bgmVolume = bgmController.value;
-        bgmPlayer.volume = bgmVolume;
+        vV.bgmVolume = bgmController.value;
+        bgmPlayer.volume = vV.bgmVolume;
 
-        sfxVolum = vfxController.value;
+        vV.sfxVolum = vfxController.value;
         for (int i = 0; i < _sfxPlayers.Length; i++)
         {
-            _sfxPlayers[i].volume = sfxVolum;
+            _sfxPlayers[i].volume = vV.sfxVolum;
         }
 
-        vfxVolumeTxt.text = $"SFX Sound : {(int)(sfxVolum * 100)}%";
-        bgmVolumeTxt.text = $"BGM Sound : {(int)(bgmVolume * 100)}%";
+        vfxVolumeTxt.text = $"SFX Sound : {(int)(vV.sfxVolum * 100)}%";
+        bgmVolumeTxt.text = $"BGM Sound : {(int)(vV.bgmVolume * 100)}%";
+    }
+
+    public void SetVolumes()
+    {
+        SaveManager.Save(vV, "Sounds.json");
     }
 
     private void Init()
@@ -75,7 +111,7 @@ public class SoundManager : MonoSingleton<SoundManager>
         bgmPlayer = bgmObject.AddComponent<AudioSource>();
         bgmPlayer.playOnAwake = false;
         bgmPlayer.loop = true;
-        bgmPlayer.volume = bgmVolume;
+        bgmPlayer.volume = vV.bgmVolume;
         bgmPlayer.clip = bgmClip;
         bgmPlayer.Play();
 
@@ -88,7 +124,7 @@ public class SoundManager : MonoSingleton<SoundManager>
         {
             _sfxPlayers[i] = sfxObject.AddComponent<AudioSource>();
             _sfxPlayers[i].playOnAwake = false;
-            _sfxPlayers[i].volume = sfxVolum;
+            _sfxPlayers[i].volume = vV.sfxVolum;
         }
     }
 

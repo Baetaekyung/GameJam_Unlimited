@@ -13,11 +13,12 @@ public class StageClearObject : MonoBehaviour
     {
         if (_isStageCleared) return;
 
+        
         if(collision.CompareTag("Player"))
         {
             Debug.Log("StageClear");
 
-            int n =GameManager.currentSceneNumber;
+            int n = GameManager.currentSceneNumber;
 
             GameManager.Instance.SetStageClear(n);
 

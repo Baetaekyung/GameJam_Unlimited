@@ -917,10 +917,17 @@ MonoBehaviour:
   BGMGroup: {fileID: -4880218638026754427, guid: 44881ac655829c1448667a14385c4c54, type: 2}
   SFXGroup: {fileID: -1406009992096643050, guid: 44881ac655829c1448667a14385c4c54, type: 2}
   bgmClip: {fileID: 8300000, guid: ac06f341564bfda439acb4c76bf4c5bf, type: 3}
-  bgmVolume: 0.1
-  sfxClipSO: []
-  sfxVolum: 1
-  channels: 16
+  sfxClipSO:
+  - {fileID: 11400000, guid: ee39425a0dfcd4a449345d3b2a33314d, type: 2}
+  - {fileID: 11400000, guid: b063b40b5f7be5e4480d8ab373506c06, type: 2}
+  - {fileID: 11400000, guid: 00c90b2d9dba0904181711aa1b02a296, type: 2}
+  - {fileID: 11400000, guid: 78e1861f32f9ea24a92958f9c07c3f47, type: 2}
+  - {fileID: 11400000, guid: 6aaa6ffb51d70bb42ae9ec3cef164015, type: 2}
+  - {fileID: 11400000, guid: 3c3b562c507505d44830caa371700841, type: 2}
+  - {fileID: 11400000, guid: 99f34cceb7f60d54cb62c0e0b1fcc621, type: 2}
+  - {fileID: 11400000, guid: 870aa5b496f7f364a931854b26a47811, type: 2}
+  - {fileID: 11400000, guid: 125df4e61dbf5d14cb75cff0ac39c96b, type: 2}
+  channels: 32
 --- !u!1 &373651996
 GameObject:
   m_ObjectHideFlags: 0

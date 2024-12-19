@@ -23,7 +23,7 @@ public class BulletMaker : MonoBehaviour
             yield return new WaitForSeconds(_shootDelay);
             GameObject go = _poolManagerSO.Spawn("Bullets", _bulletSpawnPoint.position, transform.rotation);
             var bullet = go.GetComponent<Bullet>();
-            
+            SoundManager.Instance.PlayerSFX(SfxType.TURRETACTIVE);
             bullet.RbCompo.AddForce(transform.right * _shootPower, ForceMode2D.Impulse);
         }
     }

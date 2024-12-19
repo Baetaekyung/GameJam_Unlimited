@@ -26,6 +26,8 @@ public class BallController : MonoBehaviour
 
     [SerializeField] private float _jetpackSpeed;
     public static int shootCount = 0;
+    public bool IsDead = false;
+
     public void SetShootCount(int count) => shootCount = count;
     private bool CanShoot() => shootCount > 0;
 
@@ -182,6 +184,7 @@ public class BallController : MonoBehaviour
         SetShootCount(0);
         RbCompo.velocity = Vector2.zero;
         RbCompo.isKinematic = true;
+        IsDead = true;
 
         while (val > -0.5f)
         {

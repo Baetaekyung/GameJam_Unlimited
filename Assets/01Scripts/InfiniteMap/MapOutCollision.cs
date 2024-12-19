@@ -19,6 +19,7 @@ public class MapOutCollision : MonoBehaviour
         {
             if (player is not null)
             {
+                InfiniteMapManager.Instance?.UpHeight();
                 InfiniteMapManager.Instance?.CreateMap();
                 _mapCreated = true;
             }
@@ -31,10 +32,10 @@ public class MapOutCollision : MonoBehaviour
         {
             if (player is not null)
             {
-                InfiniteMapManager.Instance?.UpHeight();
-
                 if (_mapCreated == false)
+                {
                     InfiniteMapManager.Instance?.CreateMap();
+                }
                 
                 if (SaveManager.Exist("maxScore.json"))
                 {

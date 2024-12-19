@@ -11,9 +11,13 @@ public class MovingPlatform : MonoBehaviour
 
     private Vector3 _startPosition; // 시작 위치
 
+    private Transform _playerTransform; // 플레이어의 Transform
+    private Vector3 _lastPlatformPosition; // 플랫폼의 이전 프레임 위치
+
     private void Start()
     {
         _startPosition = transform.position;  // 시작 위치 저장
+        _lastPlatformPosition = transform.position;
 
         if (_isHorizontal)
         {
@@ -23,6 +27,37 @@ public class MovingPlatform : MonoBehaviour
         if (_isVertical)
         {
             StartCoroutine(MoveVerticalRoutine());
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        //if (_playerTransform != null)
+        //{
+        //    // 플랫폼의 이동량 계산
+        //    Vector3 platformMovement = transform.position - _lastPlatformPosition;
+
+        //    // 플레이어도 같은 이동량만큼 움직이게 설정
+        //    _playerTransform.position += platformMovement;
+        //}
+
+        //// 현재 플랫폼 위치를 저장
+        //_lastPlatformPosition = transform.position;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            collision.transform.SetParent(transform);
+        }
+    }
+
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
         }
     }
 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_Name: Level _Data 1
 ========
   m_Name: EasyLevel_Data
->>>>>>>> d84671b (레벨로딩준비):Assets/07SOs/PMH/EasyLevel_Data.asset
+>>>>>>>> MINHO:Assets/07SOs/PMH/EasyLevel_Data.asset
   m_EditorClassIdentifier: 
   Level: {fileID: 0}
   levelName: 

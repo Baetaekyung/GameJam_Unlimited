@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a82144ba70575d641b786ad079d57555, type: 3}
-<<<<<<<< HEAD:Assets/07SOs/PMH/HardLevel_Data.asset
-  m_Name: HardLevel_Data
+<<<<<<<< HEAD:Assets/07SOs/StageSO/Level _Data 1.asset
+  m_Name: Level _Data 1
 ========
   m_Name: EasyLevel_Data
->>>>>>>> d84671b (레벨로딩준비):Assets/07SOs/PMH/EasyLevel_Data.asset
+>>>>>>>> MINHO:Assets/07SOs/PMH/EasyLevel_Data.asset
   m_EditorClassIdentifier: 
-  Level: {fileID: 2725821605765749159, guid: 4708c1863b82c7540b298da737f4a706, type: 3}
-  levelName: Stop
-  levelDifficulty: 2
+  Level: {fileID: 0}
+  levelName: 
+  levelDifficulty: 1

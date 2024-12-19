@@ -518,6 +518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isJetpack: 0
   jetpackDuration: 4
+  jetpackRemainTime: 0
   _maxShootForce: 30
   _shootForceDivider: 15
 --- !u!1 &7197552092548344300
@@ -549,7 +550,7 @@ Transform:
   m_GameObject: {fileID: 7197552092548344300}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.86, y: -3.2199998, z: -9.931538}
+  m_LocalPosition: {x: -3.1054258, y: -0.99226, z: -9.931538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -832,6 +833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3362558214004767686}
   - component: {fileID: 8952291441643777524}
+  - component: {fileID: 8687592640189055187}
   m_Layer: 0
   m_Name: VCam1
   m_TagString: Untagged
@@ -848,7 +850,7 @@ Transform:
   m_GameObject: {fileID: 7415746783798986228}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.86, y: -3.2199998, z: -9.931538}
+  m_LocalPosition: {x: -20.86, y: -3.2200003, z: -9.931538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -894,6 +896,21 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 4437802438431369797}
+--- !u!114 &8687592640189055187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415746783798986228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BoundingShape2D: {fileID: 0}
+  m_Damping: 0.5
+  m_MaxWindowSize: -1
 --- !u!1 &8093475264666693206
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,7 +939,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -21.8384, y: -43.151703, z: 0}
-  m_LocalScale: {x: 46.008312, y: 49.934605, z: 1}
+  m_LocalScale: {x: 51.68, y: 49.934605, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1332218455098805113}
@@ -1352,15 +1369,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7919785007917689543, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 39.73
+      value: 39.273
+      objectReference: {fileID: 0}
+    - target: {fileID: 8713205605866138679, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.328
       objectReference: {fileID: 0}
     - target: {fileID: 8822686654638270862, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
       propertyPath: m_LocalScale.x
-      value: 45
+      value: 41.2
       objectReference: {fileID: 0}
     - target: {fileID: 8822686654638270862, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.73
+      value: 18.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1589,6 +1610,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7638215334468869853}
     m_Modifications:
+    - target: {fileID: 1192956214121044777, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050784472824494855, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2156551161275713951, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
       propertyPath: m_Name
       value: Laser (1)
@@ -1659,6 +1688,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7638215334468869853}
     m_Modifications:
+    - target: {fileID: 1192956214121044777, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050784472824494855, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2156551161275713951, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
       propertyPath: m_Name
       value: Laser (3)
@@ -2211,6 +2248,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7638215334468869853}
     m_Modifications:
+    - target: {fileID: 1192956214121044777, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050784472824494855, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2156551161275713951, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
       propertyPath: m_Name
       value: Laser (2)
@@ -2479,6 +2524,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7638215334468869853}
     m_Modifications:
+    - target: {fileID: 1192956214121044777, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050784472824494855, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2156551161275713951, guid: 46a7a7d4a96c1d444a92a75c54c2ac39, type: 3}
       propertyPath: m_Name
       value: Laser (4)

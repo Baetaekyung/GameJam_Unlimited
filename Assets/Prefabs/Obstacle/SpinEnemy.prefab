@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  detectionRange: 7
+  detectionRange: 5
   dissolveMaterial: {fileID: 2100000, guid: 9322608de724c2940bb994157d5a3b0c, type: 2}
   _chaseTime: 5
   _shootInterval: 2

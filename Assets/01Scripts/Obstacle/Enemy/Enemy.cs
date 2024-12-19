@@ -20,6 +20,11 @@ public abstract class Enemy : MonoBehaviour
     {
         // 플레이어와의 거리 계산
         _distanceToPlayer = Vector3.Distance(transform.position, _player.transform.position);
+
+        if(!IsPlayerInRange())
+        {
+
+        }
     }
     protected virtual bool IsPlayerInRange()
     {

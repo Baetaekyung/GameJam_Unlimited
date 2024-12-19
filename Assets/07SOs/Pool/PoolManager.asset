@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41113aef48275c14c8e7638018d0c219, type: 3}
+  m_Name: PoolManager
+  m_EditorClassIdentifier: 
+  containerTrm: {fileID: 0}
+  pools:
+  - poolName: DetectEffect
+    prefab: {fileID: 1994774118526933249, guid: 18015ed8d021d1840b06ba808408c249, type: 3}
+    initialSize: 8
+  - poolName: Bullets
+    prefab: {fileID: 93432160010936346, guid: 695396c1c9370d6418a3eedddc8e4ff7, type: 3}
+    initialSize: 20

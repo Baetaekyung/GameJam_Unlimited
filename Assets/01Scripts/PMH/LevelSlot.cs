@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum LevelSlotType
@@ -34,7 +35,7 @@ public class LevelSlot : MonoBehaviour
 
     }
 
-    private void SetImageAndText()
+    public void SetImageAndText()
     {
         switch (levelType)
         {
@@ -66,17 +67,22 @@ public class LevelSlot : MonoBehaviour
     }
     public void LetsPlay()
     {
-        string str = "map" + (transform.GetSiblingIndex() + 1).ToString();
-        Debug.Log(str);
-        //Transform map = transform.Find(str);
-        //map.gameObject.SetActive(true);
+        if (levelType == LevelSlotType.Closed) return; //금지 소리라든지 이펙트 추가? ㅎ 
+        //string str = "map" + (transform.GetSiblingIndex() + 1).ToString();
+        //Debug.Log(str);
+        ////Transform map = transform.Find(str);
+        ////map.gameObject.SetActive(true);
         Debug.Log("클릭밍");
+        Debug.Log($"{levelData.levelDifficulty}_{transform.GetSiblingIndex()}");
+        SceneManager.LoadScene($"{levelData.levelDifficulty}_{transform.GetSiblingIndex()}");
 
-        GameCanvaManager.Instance.FadeInFadeOut(true);
-        Debug.Log(levelData.levelName);
-        Debug.Log(levelData.levelDifficulty.ToString());
-        Instantiate(levelData.Level, transform.position, Quaternion.identity);
-        TitleCanvasManager.Instance.SetMainView();
-        GameCanvaManager.Instance.FadeInFadeOut(false);
+        //입장밍
+
+        //GameCanvaManager.Instance.FadeInFadeOut(true);
+        //Debug.Log(levelData.levelName);
+        //Debug.Log(levelData.levelDifficulty.ToString());
+        //Instantiate(levelData.Level, transform.position, Quaternion.identity);
+        //TitleCanvasManager.Instance.SetMainView();
+        //GameCanvaManager.Instance.FadeInFadeOut(false);
     }
 }

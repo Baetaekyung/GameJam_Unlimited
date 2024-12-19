@@ -27,7 +27,7 @@ public class GameManager : MonoSingleton<GameManager>
         {
             clearData = new ClearData
             {
-                clearDatas = new bool[41]
+                clearDatas = new bool[51] //0번째 스테이지는 없다 1번째 스테이지부터 있다.
             };
 
             clearData.clearDatas[1] = true;
@@ -43,6 +43,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public bool IsClearStage(int stageNum)
     {
+        //Debug.Log(stageNum + " 번째 스테이지는 : " + clearData.clearDatas[stageNum]);
         return clearData.clearDatas[stageNum];
     }
 

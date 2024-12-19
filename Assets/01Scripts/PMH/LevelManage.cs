@@ -29,7 +29,6 @@ public class LevelManage : MonoBehaviour
     {
         GetChilds();
 
-        CheckLevelsCleared();
         SetClearLevleSlot();
 
         EasyLevelOpen();
@@ -72,7 +71,11 @@ public class LevelManage : MonoBehaviour
             if (GameManager.Instance.IsClearStage(i))
             {
                 easyLevels[i - 1].SetLevelType(LevelSlotType.Cleard);
-                easyLevels[i].SetLevelType(LevelSlotType.Opend);
+
+                if (easyLevels[i] != null)
+                {
+                    easyLevels[i].SetLevelType(LevelSlotType.Opend);
+                }
             }
         }
 

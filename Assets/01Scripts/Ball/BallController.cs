@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallController : MonoBehaviour
 {
@@ -185,6 +186,14 @@ public class BallController : MonoBehaviour
             {
                 Instantiate(_deadEffect, transform.position, Quaternion.identity);
                 instantEffect = true;
+
+                //Á×À½ Ãß°¡ (»ç¿îµå¶û ¾À Àç½ÃÀÛ)
+                FadeSceneChanger.Instance.FadeIn(1f, () =>
+                {
+                    //½Î¿îµå
+                    Scene cs = SceneManager.GetActiveScene();
+                    SceneManager.LoadScene(cs.name);
+                });
             }
             
             yield return null;

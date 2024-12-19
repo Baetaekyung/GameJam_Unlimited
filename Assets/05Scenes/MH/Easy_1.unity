@@ -206,7 +206,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9c915dcdd1621cd4392e9a171ef269cd, type: 2}
+  - {fileID: 2100000, guid: 46c79fe787bef04448f53753e52b245e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -228,7 +228,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -247,8 +247,8 @@ Transform:
   m_GameObject: {fileID: 23278786}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -43.3, y: 0.20000076, z: 0}
-  m_LocalScale: {x: 118.45673, y: 3.4857001, z: 1}
+  m_LocalPosition: {x: -43.3, y: -16.7188, z: 0}
+  m_LocalScale: {x: 84.61364, y: 3.4857001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 61314594}
@@ -690,7 +690,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9c915dcdd1621cd4392e9a171ef269cd, type: 2}
+  - {fileID: 2100000, guid: 46c79fe787bef04448f53753e52b245e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -712,7 +712,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -23
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -756,7 +756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46.74, y: 8.92}
+  m_AnchoredPosition: {x: 47.61, y: 8.21}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &410248069
@@ -779,7 +779,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: you can go over the wall
+  m_text: 'Platform is white
+
+    Wall is grey'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 45ee1a4609376fe48bf383b78df12cf2, type: 2}
   m_sharedMaterial: {fileID: -983576533645535835, guid: 45ee1a4609376fe48bf383b78df12cf2, type: 2}
@@ -1181,7 +1183,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25505066, y: -7.7630496, z: -10}
+  m_LocalPosition: {x: 0.24907303, y: -7.7609196, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1407,8 +1409,8 @@ Transform:
   m_GameObject: {fileID: 846751960}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.1291, y: 19.5, z: 0}
-  m_LocalScale: {x: 133.34401, y: 1, z: 1}
+  m_LocalPosition: {x: 25.1291, y: 22.0472, z: 0}
+  m_LocalScale: {x: 133.34401, y: 6.0943, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 61314594}
@@ -1478,7 +1480,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9c915dcdd1621cd4392e9a171ef269cd, type: 2}
+  - {fileID: 2100000, guid: 46c79fe787bef04448f53753e52b245e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1500,7 +1502,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.9843137, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2195,7 +2197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 63.73, y: 0.46}
+  m_AnchoredPosition: {x: 70.91, y: 14.95}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241656641
@@ -2218,7 +2220,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You can only jump\n if you \"Touch\" the platform"
+  m_text: "You can only jump\n if you \"Touch\" the platform\nONLY PLATFORM NOT WALL"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 45ee1a4609376fe48bf383b78df12cf2, type: 2}
   m_sharedMaterial: {fileID: -983576533645535835, guid: 45ee1a4609376fe48bf383b78df12cf2, type: 2}
@@ -2306,6 +2308,10 @@ PrefabInstance:
     - target: {fileID: 827800667583713336, guid: 2c064ebf6da3bac45aa10284165e4659, type: 3}
       propertyPath: m_Name
       value: ClearObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 6871549322641075961, guid: 2c064ebf6da3bac45aa10284165e4659, type: 3}
+      propertyPath: _nextStageName
+      value: TItleScene_PMH
       objectReference: {fileID: 0}
     - target: {fileID: 8932123290411019098, guid: 2c064ebf6da3bac45aa10284165e4659, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2906,7 +2912,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 90.31, y: 6.89}
+  m_AnchoredPosition: {x: 93.62, y: -0.06}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1581938454
@@ -2929,9 +2935,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Sometimes,
-
-    there is a better way.'
+  m_text: you can wall jump
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 45ee1a4609376fe48bf383b78df12cf2, type: 2}
   m_sharedMaterial: {fileID: -983576533645535835, guid: 45ee1a4609376fe48bf383b78df12cf2, type: 2}
@@ -3035,8 +3039,8 @@ Transform:
   m_GameObject: {fileID: 1617532306}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 91.4, y: 0, z: 0}
-  m_LocalScale: {x: 40, y: 1, z: 1}
+  m_LocalPosition: {x: 94.7255, y: 2.6179, z: 0}
+  m_LocalScale: {x: 45.236, y: 7.6509, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 61314594}
@@ -3106,7 +3110,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9c915dcdd1621cd4392e9a171ef269cd, type: 2}
+  - {fileID: 2100000, guid: 46c79fe787bef04448f53753e52b245e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3128,7 +3132,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.9843137, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3432,10 +3436,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 113.091835, y: 27.951641}
-      - {x: -22.169239, y: 28.92141}
+    - - {x: 117.09704, y: 31.228624}
+      - {x: -22.169239, y: 31.652227}
       - {x: -22.566843, y: -23.881613}
-      - {x: 113.399765, y: -26.550463}
+      - {x: 117.22291, y: -24.547863}
   m_UseDelaunayMesh: 0
 --- !u!4 &1882351123 stripped
 Transform:
@@ -3476,7 +3480,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.28, y: 6}
+  m_AnchoredPosition: {x: 7.01, y: 2.45}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1918099791

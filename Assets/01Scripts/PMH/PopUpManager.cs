@@ -6,14 +6,19 @@ using UnityEngine;
 public class PopUpManager : MonoSingleton<PopUpManager>
 {
     [SerializeField] private CanvasGroup _settingCanvas;
+    [SerializeField] private bool _firstClose = true;
 
     private void Start()
     {
+        if (_firstClose is false) return;
+
         FadeOutSettingPanel();
     }
 
     private void Update()
     {
+        if (_firstClose is false) return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (_settingCanvas.gameObject.activeSelf)

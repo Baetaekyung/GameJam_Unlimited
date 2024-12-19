@@ -27,7 +27,7 @@ public class SceneStatus : MonoBehaviour
     public void ChangeSceneState(SceneStateType sst)
     {
         //Time.timeScale = 1f;
-        Debug.Log(sst.ToString() + "스테이트 입니다");
+        //Debug.Log(sst.ToString() + "스테이트 입니다");
         sceneState = sst;
 
         if(sceneState == SceneStateType.Setting)

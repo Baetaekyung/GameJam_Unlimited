@@ -34,7 +34,7 @@ public class LevelSlot : MonoBehaviour
 
     }
 
-    private void SetImageAndText()
+    public void SetImageAndText()
     {
         switch (levelType)
         {
@@ -66,17 +66,17 @@ public class LevelSlot : MonoBehaviour
     }
     public void LetsPlay()
     {
-        string str = "map" + (transform.GetSiblingIndex() + 1).ToString();
-        Debug.Log(str);
-        //Transform map = transform.Find(str);
-        //map.gameObject.SetActive(true);
-        Debug.Log("클릭밍");
-
-        GameCanvaManager.Instance.FadeInFadeOut(true);
-        Debug.Log(levelData.levelName);
-        Debug.Log(levelData.levelDifficulty.ToString());
-        Instantiate(levelData.Level, transform.position, Quaternion.identity);
-        TitleCanvasManager.Instance.SetMainView();
-        GameCanvaManager.Instance.FadeInFadeOut(false);
+        //string str = "map" + (transform.GetSiblingIndex() + 1).ToString();
+        //Debug.Log(str);
+        ////Transform map = transform.Find(str);
+        ////map.gameObject.SetActive(true);
+        //Debug.Log("클릭밍");
+        //
+        //GameCanvaManager.Instance.FadeInFadeOut(true);
+        //Debug.Log(levelData.levelName);
+        //Debug.Log(levelData.levelDifficulty.ToString());
+        //Instantiate(levelData.Level, transform.position, Quaternion.identity);
+        //TitleCanvasManager.Instance.SetMainView();
+        //GameCanvaManager.Instance.FadeInFadeOut(false);
     }
 }

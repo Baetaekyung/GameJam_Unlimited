@@ -17,6 +17,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Ball/BallGuage/BallPowerGuage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Ball/BallInputController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Ball/Effect/DetectEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Core/Fade/FadeSceneChanger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Core/GameManager/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Core/PoolManager/ObjectPoolManagerSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01Scripts/Core/Wind/Wind.cs" root0="FORCE_HIGHLIGHTING" />

@@ -18,9 +18,32 @@ public class StageClearObject : MonoBehaviour
         {
             Debug.Log("StageClear");
 
-            int n = GameManager.currentSceneNumber;
+            SoundManager.Instance.PlayerSFX(SfxType.GameClear);
 
-            GameManager.Instance.SetStageClear(n);
+            Scene currentScene = SceneManager.GetActiveScene();
+            string[] str = currentScene.name.Split('_');
+
+            int offset = 1;
+            switch(str[0])
+            {
+                case "Easy":
+                    offset += 0;
+                    break;
+                case "Normal":
+                    offset += 10;
+                    break;
+                case "Hard":
+                    offset += 40;
+                    break;
+            }
+
+            offset += int.Parse(str[1]);
+
+            Debug.Log(offset + " 네 맞아요 ");
+
+            GameManager.currentSceneNumber = offset;
+
+            GameManager.Instance.SetStageClear(offset);
 
             _isStageCleared = true;
 

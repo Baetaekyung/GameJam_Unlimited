@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum SceneStateType
 {
-    Setting, Store, InGame, SelectLevel
+    Setting, Store, InGame, SelectLevel, Tip
 }
 public class SceneStatus : MonoBehaviour
 {

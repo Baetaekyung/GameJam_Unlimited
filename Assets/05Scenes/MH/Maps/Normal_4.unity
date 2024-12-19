@@ -139,17 +139,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3417005474131071778, guid: 778c2cb2dcc7fdf4fac9037eca0fc3b6, type: 3}
+      propertyPath: _nextStageName
+      value: Normal_5
+      objectReference: {fileID: 0}
     - target: {fileID: 4728761928858017216, guid: 778c2cb2dcc7fdf4fac9037eca0fc3b6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5684307645020447381, guid: 778c2cb2dcc7fdf4fac9037eca0fc3b6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.399998
+      value: -0.8062639
       objectReference: {fileID: 0}
     - target: {fileID: 5684307645020447381, guid: 778c2cb2dcc7fdf4fac9037eca0fc3b6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.7
+      value: -1.7852898
       objectReference: {fileID: 0}
     - target: {fileID: 7384498419051539482, guid: 778c2cb2dcc7fdf4fac9037eca0fc3b6, type: 3}
       propertyPath: m_LocalPosition.x

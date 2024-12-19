@@ -1045,11 +1045,9 @@ MonoBehaviour:
   BGMGroup: {fileID: -4880218638026754427, guid: 44881ac655829c1448667a14385c4c54, type: 2}
   SFXGroup: {fileID: -1406009992096643050, guid: 44881ac655829c1448667a14385c4c54, type: 2}
   bgmClip: {fileID: 8300000, guid: ac06f341564bfda439acb4c76bf4c5bf, type: 3}
-  bgmVolume: 0.1
   sfxClipSO:
   - {fileID: 11400000, guid: ee39425a0dfcd4a449345d3b2a33314d, type: 2}
   - {fileID: 11400000, guid: b063b40b5f7be5e4480d8ab373506c06, type: 2}
-  sfxVolum: 0.1
   channels: 10
 --- !u!1 &519420028
 GameObject:
@@ -2311,7 +2309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6871549322641075961, guid: 2c064ebf6da3bac45aa10284165e4659, type: 3}
       propertyPath: _nextStageName
-      value: TItleScene_PMH
+      value: Easy_3
       objectReference: {fileID: 0}
     - target: {fileID: 8932123290411019098, guid: 2c064ebf6da3bac45aa10284165e4659, type: 3}
       propertyPath: m_LocalPosition.x

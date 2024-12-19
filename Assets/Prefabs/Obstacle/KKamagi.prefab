@@ -185,8 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 15
   detectionRange: 20
-  minSpeed: 0.5
-  dashCooldown: 3
+  minSpeed: 5
   waitBeforeDash: 2
 --- !u!60 &1315777972291947425
 PolygonCollider2D:

@@ -31,12 +31,13 @@ public class SpinBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if(collision.TryGetComponent(out BallController player))
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+        }
+        if (collision.TryGetComponent(out BallController player))
         {
             player.Dead();
         }
-
-        Destroy(gameObject);
     }
 }

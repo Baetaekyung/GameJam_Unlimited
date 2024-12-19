@@ -29,13 +29,12 @@ public class LevelManage : MonoBehaviour
     {
         GetChilds();
 
-        SetClearLevleSlot();
-
         EasyLevelOpen();
 
-        CheckLevelsCleared();
+        SetAllLocked();
+        ShinCheckLevels();
 
-        easyLevels[0].SetLevelType(LevelSlotType.Opend);
+        //easyLevels[0].SetLevelType(LevelSlotType.Opend);
     }
 
     private void GetChilds()
@@ -53,104 +52,64 @@ public class LevelManage : MonoBehaviour
             hardLevels.Add(hardLevelParent.GetChild(i).GetComponent<LevelSlot>());
         }
     }
-    public void CheckLevelsCleared()
+    private void ShinCheckLevels()
     {
-        for (int i = 1; i <= easyLevels.Count; i++)
-        {
-            //Debug.Log($"{i + 0} ��° ���� ��");
-            if (GameManager.Instance.IsClearStage(i) == false)
-            {
-                easyLevels[i - 1].SetLevelType(LevelSlotType.Closed);
-            }
-        }
-        
-        for (int i = 0; i < easyLevels.Count; i++)
-        {
-            //Debug.Log($"{i + 0} ��° ���� ��");
-            if (GameManager.Instance.IsClearStage(i + 1))
-            {
-                easyLevels[i].SetLevelType(LevelSlotType.Cleard);
+        Debug.Log("현재 최신씬은 : " + GameManager.currentSceneNumber.currentSceneNumbers);
 
-                if(i < easyLevels.Count)
+        if(GameManager.currentSceneNumber.currentSceneNumbers > 0)
+        {
+            foreach(var level in easyLevels)
+            {
+                int levelNum = level.transform.GetSiblingIndex() + 1;
+                
+                if(levelNum <= GameManager.currentSceneNumber.currentSceneNumbers)
                 {
-                    if(i == easyLevels.Count - 1)
-                    {
-                        break;
-                    }
-                    GameManager.currentSceneNumber = i + 2;
-                    Debug.Log(GameManager.currentSceneNumber + " : 번째 씬 저장밍");
-                    easyLevels[i + 1].SetLevelType(LevelSlotType.Opend);
+                    level.SetLevelType(LevelSlotType.Opend);
+                    Debug.Log(levelNum + " 번 레벨 까지 열림");
                 }
             }
         }
-
-
-        //��������� �ٽ� �ݴ� ������ ���ڵ�
-        //----------------------------------------------------------------
-        for (int i = 1; i <= normalLevels.Count; i++)
+        if(GameManager.currentSceneNumber.currentSceneNumbers > 10)
         {
-            if (GameManager.Instance.IsClearStage(i + 10) == false)
+            foreach (var level in normalLevels)
             {
-                normalLevels[i - 1].SetLevelType(LevelSlotType.Closed);
-            }
-        }
+                int levelNum = level.transform.GetSiblingIndex() + 11;
 
-        for (int i = 0; i < normalLevels.Count; i++)
-        {
-            if (GameManager.Instance.IsClearStage(i + 10))
-            {
-                normalLevels[i].SetLevelType(LevelSlotType.Cleard);
-
-                if (i < normalLevels.Count)
+                if (levelNum <= GameManager.currentSceneNumber.currentSceneNumbers)
                 {
-                    if (i == normalLevels.Count - 1)
-                    {
-                        break;
-                    }
-                    GameManager.currentSceneNumber = i + 12;
-                    Debug.Log(GameManager.currentSceneNumber + " : 번째 씬 저장밍");
-                    normalLevels[i + 1].SetLevelType(LevelSlotType.Opend);
+                    level.SetLevelType(LevelSlotType.Opend);
+                    Debug.Log(levelNum + " 번 레벨 까지 열림");
                 }
             }
         }
-
-
-        //----------------------------------------------------------------
-        for (int i = 1; i <= hardLevels.Count; i++)
+        if (GameManager.currentSceneNumber.currentSceneNumbers > 40)
         {
-            if (GameManager.Instance.IsClearStage(i + 40) == false)
+            foreach (var level in hardLevels)
             {
-                hardLevels[i - 1].SetLevelType(LevelSlotType.Closed);
-            }
-        }
+                int levelNum = level.transform.GetSiblingIndex() + 41;
 
-        for (int i = 0; i < hardLevels.Count; i++)
-        {
-            if (GameManager.Instance.IsClearStage(i + 40))
-            {
-                hardLevels[i].SetLevelType(LevelSlotType.Cleard);
-
-                if (i < hardLevels.Count)
+                if (levelNum <= GameManager.currentSceneNumber.currentSceneNumbers)
                 {
-                    if (i == hardLevels.Count - 1)
-                    {
-                        break;
-                    }
-                    GameManager.currentSceneNumber = i + 42;
-                    Debug.Log(GameManager.currentSceneNumber + " : 번째 씬 저장밍");
-                    hardLevels[i + 1].SetLevelType(LevelSlotType.Opend);
+                    level.SetLevelType(LevelSlotType.Opend);
+                    Debug.Log(levelNum + " 번 레벨 까지 열림");
                 }
             }
         }
+    }
 
-        if (GameManager.currentSceneNumber == 10)
+    private void SetAllLocked()
+    {
+        foreach (var level in easyLevels)
         {
-            normalLevels[0].SetLevelType(LevelSlotType.Opend);
+            level.SetLevelType(LevelSlotType.Closed);
         }
-
-        if (GameManager.currentSceneNumber == 30)
+        foreach (var level in normalLevels)
         {
-            hardLevels[0].SetLevelType(LevelSlotType.Opend);
+            level.SetLevelType(LevelSlotType.Closed);
+        }
+        foreach (var level in hardLevels)
+        {
+            level.SetLevelType(LevelSlotType.Closed);
         }
     }
 

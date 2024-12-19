@@ -19,7 +19,7 @@ public class TitleCanvasManager : MonoBehaviour
     private float lastTurnTime = 0;
     private float turnningCooldown = 1f;
 
-    [SerializeField] private float titleSceneXPos, selectLevelSceneXPos, settingSceneXPos, shopSceneXPos, tipSceneXPos;
+    [SerializeField] private float titleSceneXPos, challengeSceneXPos, timeattackSceneXPos, settingSceneXPos, tip1SceneXPos, tip2SceneXPos;
     private float currenPosX;
 
     [SerializeField] private Transform _uiControllerTrm;
@@ -38,40 +38,16 @@ public class TitleCanvasManager : MonoBehaviour
 
     private void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.E))
-        // {
-        //     //if (CheckIsTurnningEnd())
-        //     //{
-        //     //    lastTurnTime = Time.time;
-        //     //    SetChangeView(90);
-        //     //}
-        //     SlideScene(1);
-        // }
-        // else if (Input.GetKeyDown(KeyCode.Q))
-        // {
-        //     //if (CheckIsTurnningEnd())
-        //     //{
-        //     //    lastTurnTime = Time.time;
-        //     //    SetChangeView(-90);
-        //     //}
-        //     SlideScene(-1);
-        // }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SestSettingView();
-        }
-
-        //RotateView();
         SlideView();
     }
+
     public void SlideScene(int v)
     {
         currentScene += v;
 
-        if(currentScene > 5)
+        if(currentScene > 6)
         {
-            currentScene = 5;
+            currentScene = 6;
         }
 
         if (currentScene <= 1)
@@ -81,24 +57,28 @@ public class TitleCanvasManager : MonoBehaviour
         switch (currentScene)
         {
             case 1:
-                SceneStatus.Instance.ChangeSceneState(SceneStateType.InGame); //90
+                SceneStatus.Instance.ChangeSceneState(SceneStateType.Title);
                 currenPosX = titleSceneXPos;
                 break;
             case 2:
-                SceneStatus.Instance.ChangeSceneState(SceneStateType.SelectLevel); //180
-                currenPosX = selectLevelSceneXPos;
+                SceneStatus.Instance.ChangeSceneState(SceneStateType.Challenge);
+                currenPosX = challengeSceneXPos;
                 break;
             case 3:
-                SceneStatus.Instance.ChangeSceneState(SceneStateType.Setting); //270
-                currenPosX = settingSceneXPos;
+                SceneStatus.Instance.ChangeSceneState(SceneStateType.Timeattck);
+                currenPosX = timeattackSceneXPos;
                 break;
             case 4:
-                SceneStatus.Instance.ChangeSceneState(SceneStateType.Store); //0
-                currenPosX = shopSceneXPos;
+                SceneStatus.Instance.ChangeSceneState(SceneStateType.Setting);
+                currenPosX = settingSceneXPos;
                 break;
             case 5:
-                SceneStatus.Instance.ChangeSceneState(SceneStateType.Tip); //0
-                currenPosX = tipSceneXPos;
+                SceneStatus.Instance.ChangeSceneState(SceneStateType.Tip1);
+                currenPosX = tip1SceneXPos;
+                break;
+            case 6:
+                SceneStatus.Instance.ChangeSceneState(SceneStateType.Tip2);
+                currenPosX = tip2SceneXPos;
                 break;
         }
 
@@ -122,49 +102,5 @@ public class TitleCanvasManager : MonoBehaviour
         // �ε巴�� ȸ��
         currentRotation = Mathf.LerpAngle(currentRotation, targetRotation, Time.deltaTime * smoothSpeed);
         RectTrm.localRotation = Quaternion.Euler(0, 0, currentRotation);
-    }
-
-    private void SetChangeView(float offset)
-    {
-        // ��ǥ ȸ���� 90���� ����
-        targetRotation += offset;
-
-        //���� -> ���� -> �޴� �� ���� -> �ܰ輱��
-        currentScene++;
-
-        switch(currentScene)
-        {
-            case 1:
-                SceneStatus.Instance.ChangeSceneState(SceneStateType.Setting); //90
-                break;
-            case 2:
-                SceneStatus.Instance.ChangeSceneState(SceneStateType.Store); //180
-                break;
-            case 3:
-                SceneStatus.Instance.ChangeSceneState(SceneStateType.InGame); //270
-                break;
-            case 4:
-                SceneStatus.Instance.ChangeSceneState(SceneStateType.SelectLevel); //0
-                break;
-        }
-
-        // ������ �׻� 0~360 ���̷� ����
-        if (targetRotation >= 360f)
-        {
-            currentScene = 0;
-            targetRotation -= 360f;
-        }
-    }
-
-    public void SetMainView()
-    {
-        targetRotation = 270f;
-        SceneStatus.Instance.ChangeSceneState(SceneStateType.InGame);
-    }
-
-    public void SestSettingView()
-    {
-        targetRotation = 90f;
-        SceneStatus.Instance.ChangeSceneState(SceneStateType.Setting);
     }
 }

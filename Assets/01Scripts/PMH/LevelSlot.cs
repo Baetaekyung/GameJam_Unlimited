@@ -79,13 +79,12 @@ public class LevelSlot : MonoBehaviour
                 sceneNum = loadScene + 41;
                 break;
         }
-        
 
-        Debug.Assert(true, $"{levelDiff}_{loadScene + 1}");
+
+        Debug.Log($"다음에 로딩 할 씬은 : {levelDiff}_{loadScene + 1} 번째 씬입니다.");
 
         FadeSceneChanger.Instance.FadeIn(1f, () =>
         {
-            GameManager.Instance.SetCurrentSceneNumber(sceneNum);
             SceneManager.LoadScene($"{levelDiff}_{loadScene + 1}");
         });
         //입장밍

@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4120086914339503437, guid: 9452f52cb1494704888c39f285b620fa, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4700526522289497931, guid: 9452f52cb1494704888c39f285b620fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.2
@@ -173,6 +177,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4700526522289497931, guid: 9452f52cb1494704888c39f285b620fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250867030046754437, guid: 9452f52cb1494704888c39f285b620fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250867030046754437, guid: 9452f52cb1494704888c39f285b620fa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569277308526781609, guid: 9452f52cb1494704888c39f285b620fa, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -131,9 +131,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 847866612785334210, guid: 17e56008d1b1bb74e95f71b24530b558, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 960064390481968459, guid: 17e56008d1b1bb74e95f71b24530b558, type: 3}
       propertyPath: m_Name
       value: Stage 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901454913730960934, guid: 17e56008d1b1bb74e95f71b24530b558, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684307645020447381, guid: 17e56008d1b1bb74e95f71b24530b558, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684307645020447381, guid: 17e56008d1b1bb74e95f71b24530b558, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.8
       objectReference: {fileID: 0}
     - target: {fileID: 7384498419051539482, guid: 17e56008d1b1bb74e95f71b24530b558, type: 3}
       propertyPath: m_LocalPosition.x

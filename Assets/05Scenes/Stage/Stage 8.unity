@@ -135,13 +135,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage 8
       objectReference: {fileID: 0}
-    - target: {fileID: 3362558214004767686, guid: 18ccfd3c4612d7e40bf6c8566daee73b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -7.3
+    - target: {fileID: 3179890403821532228, guid: 18ccfd3c4612d7e40bf6c8566daee73b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684307645020447381, guid: 18ccfd3c4612d7e40bf6c8566daee73b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.899999
       objectReference: {fileID: 0}
     - target: {fileID: 5684307645020447381, guid: 18ccfd3c4612d7e40bf6c8566daee73b, type: 3}
       propertyPath: m_LocalPosition.y
       value: -7.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196875410775846304, guid: 18ccfd3c4612d7e40bf6c8566daee73b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7384498419051539482, guid: 18ccfd3c4612d7e40bf6c8566daee73b, type: 3}
       propertyPath: m_LocalPosition.x

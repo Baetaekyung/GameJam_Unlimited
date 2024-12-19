@@ -18,10 +18,23 @@ public class CloudPlatform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.collider.CompareTag("Player"))
+        {
+            collision.transform.SetParent(transform);
+        }
+
         if (!_isFading) // 이미 사라지는 중이 아니라면
         {
             _isFading = true; // 사라지는 상태로 설정
             StartCoroutine(FadeOut());
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.collider.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
         }
     }
 

@@ -16,6 +16,7 @@ public class BallInputController : MonoSingleton<BallInputController>
     public bool isJetpack = false;
 
     public float jetpackDuration = 2f;
+    public float jetpackRemainTime = 0f;
 
     private Vector2 _dragStartPosition;
     private Vector2 _dragPosition;
@@ -31,13 +32,13 @@ public class BallInputController : MonoSingleton<BallInputController>
     
     private void Update()
     {
-        if (isJetpack)
+        if (isJetpack && jetpackRemainTime > 0)
         {
-            jetpackDuration -= Time.deltaTime;
-            if (jetpackDuration <= 0)
+            jetpackRemainTime -= Time.deltaTime;
+            if (jetpackRemainTime <= 0)
             {
                 isJetpack = false;
-                jetpackDuration = 4f; //4초만 하자
+                jetpackRemainTime = 0f;
             }
         }
         
@@ -84,7 +85,7 @@ public class BallInputController : MonoSingleton<BallInputController>
             _direction = Vector2.zero;
             _isDragging = false;
             isJetpack = false;
-            jetpackDuration = 4f;
+            jetpackRemainTime = 0f;
             OnDragEndEvent?.Invoke();
             
             return;

@@ -7,6 +7,7 @@ using UnityEngine;
 public class Pusher : MonoBehaviour
 {
     private Animator _animator;
+    [SerializeField] private float _pushForce;
 
     private void Awake()
     {
@@ -17,7 +18,7 @@ public class Pusher : MonoBehaviour
     {
         if (other.transform.TryGetComponent(out BallController ball))
         {
-            ball.AddForce(transform.up, 30f, ForceMode2D.Impulse);
+            ball.AddForce(transform.up, _pushForce, ForceMode2D.Impulse);
             _animator.SetTrigger("Push");
         }
     }

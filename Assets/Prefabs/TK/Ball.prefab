@@ -292,8 +292,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shakeDuration: 0.1
-  _shakeAmplitude: 2
-  _shakeFrequency: 2
 --- !u!1 &3859019918078394262
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +466,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -526106399
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.51078165, g: 0.9213414, b: 1, a: 1}
   m_FlipX: 0

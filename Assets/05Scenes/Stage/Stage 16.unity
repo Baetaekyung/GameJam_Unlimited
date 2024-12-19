@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage 16
       objectReference: {fileID: 0}
+    - target: {fileID: 4145704744915464059, guid: 97dd1a797336d784192695c65e418dc0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7384498419051539482, guid: 97dd1a797336d784192695c65e418dc0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.2
@@ -173,6 +177,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7384498419051539482, guid: 97dd1a797336d784192695c65e418dc0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8523570232129451679, guid: 97dd1a797336d784192695c65e418dc0, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

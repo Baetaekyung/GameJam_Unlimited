@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage 15
       objectReference: {fileID: 0}
+    - target: {fileID: 3281324257256490969, guid: b91d37fc7877a2648b8510c09cbcb18f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082146197323406909, guid: b91d37fc7877a2648b8510c09cbcb18f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7384498419051539482, guid: b91d37fc7877a2648b8510c09cbcb18f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.2
